@@ -1,108 +1,93 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Pregnancy Journal for the First-Time Mom — Foxglen Press</title><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Cormorant+Garamond:ital@0;1&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet"><style>
-:root{--ink:#2c2438;--muted:#6b6079;--accent:#e8a0b0;--accent2:#a8c4d8;--deep:#1c2740;--foam:#f6eef0}
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Katya Activity — Foxglen</title><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Cormorant+Garamond:ital@0;1&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet"><style>
+:root{--ink:#2c2438;--muted:#6b6079;--accent:#e8a0b0;--accent2:#a8c4d8;--foam:#f6eef0}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'Nunito',sans-serif;color:var(--ink);background:var(--foam);line-height:1.6;overflow-x:hidden}
-/* liquid background: soft blue→blush vertical drift */
 .bg{position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,#eef4f7 0%,#f6eef0 35%,#eef4f7 60%,#f3eef6 100%);background-size:100% 200%;animation:flow 24s ease-in-out infinite alternate}
 @keyframes flow{from{background-position:0 0}to{background-position:0 100%}}
 .bg:before{content:'';position:absolute;inset:0;background:radial-gradient(60vw 60vw at 20% 20%,rgba(168,196,216,.25),transparent 60%),radial-gradient(50vw 50vw at 80% 70%,rgba(232,160,176,.22),transparent 60%);animation:drift 30s ease-in-out infinite alternate}
 @keyframes drift{from{transform:translate(0,0)}to{transform:translate(4%,-3%)}}
-.wrap{position:relative;z-index:2;max-width:820px;margin:0 auto;padding:0 24px}
-.scene{min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12vh 24px;position:relative}
-.scene .num{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(64px,22vw,180px);line-height:.9;background:linear-gradient(180deg,var(--accent2),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;opacity:0;transform:translateY(40px);transition:opacity 1s ease,transform 1s ease}
-.scene .num.in{opacity:1;transform:translateY(0)}
-.scene .label{font-size:clamp(16px,4.5vw,22px);color:var(--muted);max-width:560px;margin:18px auto 0;opacity:0;transform:translateY(30px);transition:opacity 1s ease .2s,transform 1s ease .2s}
-.scene .label.in{opacity:1;transform:translateY(0)}
-.scene .small{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(20px,5vw,30px);color:var(--ink)}
-/* hero */
-.hero .book{width:min(260px,62vw);height:auto;display:block;margin:0 auto 28px;border-radius:12px;box-shadow:0 24px 60px rgba(44,36,56,.22)}
-.hero h1{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(30px,8vw,56px);line-height:1.06;color:var(--ink)}
-.hero .sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(17px,4.5vw,23px);color:var(--muted);margin:12px 0 14px}
-.hero p.lead{font-size:16px;color:var(--muted);max-width:520px;margin:0 auto}
-.cta{display:inline-block;margin-top:30px;background:linear-gradient(90deg,var(--accent2),var(--accent));color:#fff;text-decoration:none;padding:15px 34px;border-radius:30px;font-weight:700;letter-spacing:.4px;box-shadow:0 12px 30px rgba(232,160,176,.4);transition:transform .15s,box-shadow .2s}
-.cta:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(232,160,176,.6)}
-.scroll-hint{margin-top:38px;font-size:12px;letter-spacing:2px;color:var(--muted);animation:bob 2s ease-in-out infinite}
-@keyframes bob{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(8px);opacity:1}}
-.brand{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:6;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);opacity:.85}
-footer{position:relative;z-index:2;text-align:center;color:var(--muted);font-size:13px;padding:30px 0 60px}
-footer a{color:var(--accent);text-decoration:none}
-.divider{width:60px;height:2px;background:linear-gradient(90deg,var(--accent2),var(--accent));margin:0 auto 18px;border-radius:2px;opacity:0;transition:opacity 1s}
-.divider.in{opacity:1}
-@media(max-width:760px){.scene{min-height:88vh}}
+.wrap{position:relative;z-index:2;max-width:840px;margin:0 auto;padding:0 24px}
+.brand{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:30;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);opacity:.85}
+/* login gate */
+#gate{position:fixed;inset:0;z-index:40;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 40%,#fbf3f5,#eef4f7);transition:opacity .8s,visibility .8s}
+#gate.hide{opacity:0;visibility:hidden}
+#gate h2{font-family:'Playfair Display',serif;font-weight:700;font-size:34px;color:var(--ink);margin-bottom:6px}
+#gate .gs{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--muted);margin-bottom:24px}
+#gate input{display:block;width:260px;padding:13px 16px;margin:8px 0;border:1px solid #d8ccd6;border-radius:10px;font-family:'Nunito',sans-serif;font-size:15px;background:#fff;color:var(--ink)}
+#gate button{margin-top:14px;width:260px;padding:13px;border:none;border-radius:10px;background:linear-gradient(90deg,var(--accent2),var(--accent));color:#fff;font-weight:700;font-size:15px;cursor:pointer;box-shadow:0 10px 24px rgba(232,160,176,.4)}
+#gate .note{margin-top:16px;font-size:11px;color:#a89aba;text-align:center;max-width:300px}
+#gate .err{color:#d2607a;font-size:12px;min-height:14px;margin-top:6px}
+/* dashboard */
+.scene{min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:9vh 24px;position:relative}
+h1.title{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(30px,7vw,50px);color:var(--ink)}
+.sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(16px,4vw,22px);color:var(--muted);margin:10px 0 6px}
+.gen{font-size:12px;color:#a89aba;margin-bottom:8px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;width:100%;margin:30px 0}
+.card{background:rgba(255,255,255,.6);border:1px solid rgba(232,160,176,.25);border-radius:16px;padding:22px 16px;box-shadow:0 10px 30px rgba(44,36,56,.06)}
+.card .v{font-family:'Playfair Display',serif;font-weight:700;font-size:34px;background:linear-gradient(180deg,var(--accent2),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+.card .k{font-size:12px;color:var(--muted);margin-top:4px;letter-spacing:.5px}
+.panel{background:rgba(255,255,255,.55);border:1px solid rgba(168,196,216,.3);border-radius:18px;padding:22px;margin:18px 0;box-shadow:0 10px 30px rgba(44,36,56,.05)}
+.panel h3{font-family:'Playfair Display',serif;font-weight:600;font-size:20px;color:var(--ink);margin-bottom:14px;text-align:left}
+.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-start}
+.chip{background:rgba(232,160,176,.12);border:1px solid rgba(232,160,176,.3);border-radius:20px;padding:8px 14px;font-size:13px;color:var(--ink)}
+.chip b{color:var(--accent);margin-left:6px}
+.foot{text-align:center;color:var(--muted);font-size:12px;padding:20px 0 50px}
+@media(max-width:760px){.cards{grid-template-columns:repeat(2,1fr)}}
 </style></head><body>
 <div class="bg"></div>
-<div class="brand">Foxglen Press</div>
+<div class="brand">Foxglen · Katya</div>
 
-<section class="scene hero">
-  <svg class="book" viewBox="0 0 300 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pregnancy Journal cover">
-    <defs>
-      <linearGradient id="cv" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbf3f5"/><stop offset="1" stop-color="#eef4f7"/></linearGradient>
-      <linearGradient id="ln" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a8c4d8"/><stop offset="1" stop-color="#e8a0b0"/></linearGradient>
-    </defs>
-    <rect x="6" y="6" width="288" height="408" rx="10" fill="url(#cv)" stroke="url(#ln)" stroke-width="2"/>
-    <path d="M150 84 C132 98 132 132 150 146 C168 132 168 98 150 84 Z" fill="none" stroke="#a8c4d8" stroke-width="2.4"/>
-    <line x1="150" y1="92" x2="150" y2="140" stroke="#a8c4d8" stroke-width="1.2"/>
-    <text x="150" y="196" text-anchor="middle" font-family="Playfair Display, serif" font-weight="700" font-size="27" fill="#2c2438">Pregnancy</text>
-    <text x="150" y="228" text-anchor="middle" font-family="Playfair Display, serif" font-weight="700" font-size="27" fill="#2c2438">Journal</text>
-    <text x="150" y="256" text-anchor="middle" font-family="Cormorant Garamond, serif" font-weight="700" font-style="italic" font-size="15" fill="#6b6079">for the First-Time Mom</text>
-    <line x1="104" y1="276" x2="196" y2="276" stroke="#e8a0b0" stroke-width="2"/>
-    <text x="150" y="304" text-anchor="middle" font-family="Nunito, sans-serif" font-weight="700" font-size="12" fill="#6b6079">Memory Book, Keepsake &amp; Planner</text>
-    <text x="150" y="322" text-anchor="middle" font-family="Nunito, sans-serif" font-weight="700" font-size="12" fill="#6b6079">with Milestones &amp; Mom-to-Be Tracker</text>
-    <text x="150" y="402" text-anchor="middle" font-family="Nunito, sans-serif" font-weight="700" font-size="11" letter-spacing="2" fill="#a8c4d8">FOXGLEN PRESS</text>
-  </svg>
-  <h1>Pregnancy Journal<br>for the First-Time Mom</h1>
-  <div class="sub">A guided 9-month keepsake, one page at a time.</div>
-  <p class="lead">Gentle weekly prompts, fruit-size facts, mood snapshots, ultrasound &amp; photo space — plus prenatal visit forms, a birth-preferences page and your baby's first 12 months.</p>
-  <a class="cta" href="#buy">Buy on Amazon</a>
-  <div class="scroll-hint">scroll to begin ↓</div>
+<div id="gate">
+  <h2>Katya Console</h2>
+  <div class="gs">activity &amp; insights</div>
+  <input id="u" type="text" placeholder="login" autocomplete="off">
+  <input id="p" type="password" placeholder="password" autocomplete="off">
+  <div class="err" id="err"></div>
+  <button id="go">Enter</button>
+  <div class="note">Demo gate — this is a public static page. No real authentication; stats are aggregate &amp; non-private.</div>
+</div>
+
+<div id="dash" style="display:none">
+<section class="scene wrap">
+  <h1 class="title">Katya Activity</h1>
+  <div class="sub">your digital familiar, at a glance</div>
+  <div class="gen">generated 2026-07-12 20:31 UTC</div>
+  <div class="cards">
+    <div class="card"><div class="v">21</div><div class="k">SESSIONS</div></div>
+    <div class="card"><div class="v">8925</div><div class="k">MESSAGES FROM YOU</div></div>
+    <div class="card"><div class="v">23856</div><div class="k">MY REPLIES</div></div>
+    <div class="card"><div class="v">20606</div><div class="k">ACTIONS TAKEN</div></div>
+    <div class="card"><div class="v">9</div><div class="k">ACTIVE DAYS</div></div>
+    <div class="card"><div class="v">1%</div><div class="k">PRESENCE</div></div>
+  </div>
+
+  <div class="panel">
+    <h3>Activity by day</h3>
+    <svg viewBox="0 0 640 200" width="100%" preserveAspectRatio="none" style="display:block"><defs><linearGradient id="bar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a8c4d8"/><stop offset="1" stop-color="#e8a0b0"/></linearGradient></defs><rect x="10.7" y="178" width="49.8" height="2" rx="4" fill="url(#bar)"/><text x="35.6" y="194" font-size="9" fill="#8a7a93" text-anchor="middle">06-28</text><rect x="81.8" y="180" width="49.8" height="0" rx="4" fill="url(#bar)"/><text x="106.7" y="194" font-size="9" fill="#8a7a93" text-anchor="middle">05-17</text><rect x="152.9" y="180" width="49.8" height="0" rx="4" fill="url(#bar)"/><text x="177.8" y="194" font-size="9" fill="#8a7a93" text-anchor="middle">07-08</text><rect x="224.0" y="71" width="49.8" height="109" rx="4" fill="url(#bar)"/><text x="248.9" y="194" font-size="9" fill="#8a7a93" text-anchor="middle">07-10</text><rect x="295.1" y="174" width="49.8" height="6" rx="4" fill="url(#bar)"/><text x="320.0" y="194" font-size="9" fill="#8a7a93" text-anchor="middle">07-11</text><rect x="366.2" y="0" width="49.8" height="180" rx="4" fill="url(#bar)"/><text x="391.1" y="194" font-size="9" fill="#8a7a93" text-anchor="middle">07-12</text><rect x="437.3" y="180" width="49.8" height="0" rx="4" fill="url(#bar)"/><text x="462.2" y="194" font-size="9" fill="#8a7a93" text-anchor="middle">07-13</text><rect x="508.4" y="180" width="49.8" height="0" rx="4" fill="url(#bar)"/><text x="533.3" y="194" font-size="9" fill="#8a7a93" text-anchor="middle">07-14</text><rect x="579.6" y="179" width="49.8" height="1" rx="4" fill="url(#bar)"/><text x="604.4" y="194" font-size="9" fill="#8a7a93" text-anchor="middle">07-21</text></svg>
+  </div>
+
+  <div class="panel">
+    <h3>Top themes</h3>
+    <div class="chips"><div class="chip">exec<b>9999</b></div><div class="chip">write<b>2957</b></div><div class="chip">read<b>1566</b></div><div class="chip">edit<b>986</b></div><div class="chip">web_search<b>777</b></div><div class="chip">message<b>733</b></div></div>
+  </div>
+
+  <div class="foot">Aggregate, non-private stats · Foxglen Press · regenerated on push</div>
 </section>
-
-<!-- scrollytelling fact scenes -->
-<section class="scene">
-  <div class="num" data-count="40">40</div>
-  <div class="label">weeks of waiting. Forty little chapters between “we’re expecting” and “hello, you.”</div>
-</section>
-
-<section class="scene">
-  <div class="num" data-count="9">9</div>
-  <div class="label">months of becoming. Each one its own season — quiet, golden, then the beautiful rush.</div>
-</section>
-
-<section class="scene">
-  <div class="num">poppy seed</div>
-  <div class="label">is how small your baby is at week one. By week forty? About the size of a small pumpkin.</div>
-</section>
-
-<section class="scene">
-  <div class="num">1st</div>
-  <div class="label">kick you’ll never forget. The day the flutters turned into “oh — that’s a person in there.”</div>
-</section>
-
-<section class="scene">
-  <div class="divider"></div>
-  <div class="small">Most first-time moms say the weeks blur. The cravings, the kicks, the nervous joy — all of it worth keeping.</div>
-</section>
-
-<section class="scene">
-  <div class="num" data-count="100">100%</div>
-  <div class="label">of these moments you’ll want to remember later. This journal simply makes room for them.</div>
-</section>
-
-<section class="scene" id="buy">
-  <div class="divider"></div>
-  <h1 style="font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(26px,6vw,40px);color:var(--ink)">Ready to begin?</h1>
-  <p class="lead" style="margin:14px auto 24px">A quiet, beautiful keepsake — for you, and for the little one you’ll one day read it with.</p>
-  <a class="cta" href="#buy">Buy on Amazon</a>
-</section>
-
-<footer>© Foxglen Press · Pregnancy Journal for the First-Time Mom<br><span style="margin-top:6px;display:inline-block">Made with love · Source on <a href="https://github.com/Eugene55555/kdp-j">GitHub</a></span></footer>
+</div>
 
 <script>
-const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');
-  const n=e.target.querySelector('[data-count]');
-  if(n){const t=+n.dataset.count;if(!isNaN(t)){let cur=0;const step=Math.max(1,Math.round(t/40));const tick=setInterval(()=>{cur+=step;if(cur>=t){cur=t;clearInterval(tick);}n.firstChild?n.textContent=cur:n.textContent=cur;},30);}}
-}}},{threshold:.4});
-document.querySelectorAll('.scene .num,.scene .label,.divider').forEach(el=>io.observe(el));
+document.getElementById('go').addEventListener('click',open);
+document.getElementById('p').addEventListener('keydown',e=>{if(e.key==='Enter')open()});
+document.getElementById('u').addEventListener('keydown',e=>{if(e.key==='Enter')open()});
+function open(){
+  var u=document.getElementById('u').value, p=document.getElementById('p').value;
+  // demo: any non-empty login passes; password accepted for demo
+  if(u.trim()===''){document.getElementById('err').textContent='enter a login';return;}
+  document.getElementById('err').textContent='';
+  document.getElementById('gate').classList.add('hide');
+  document.getElementById('dash').style.display='block';
+  window.scrollTo(0,0);
+}
 </script>
 </body></html>
