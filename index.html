@@ -10,12 +10,12 @@ body{font-family:'Nunito',sans-serif;color:var(--ink);background:var(--foam);ove
 @keyframes drift{from{transform:translate(0,0)}to{transform:translate(4%,-3%)}}
 body.dark .bg{background:linear-gradient(180deg,#0a0820 0%,#120a2e 35%,#0a1228 60%,#1a0a26 100%)}
 body.dark .bg:before{background:radial-gradient(60vw 60vw at 20% 20%,rgba(125,249,255,.16),transparent 60%),radial-gradient(50vw 50vw at 80% 70%,rgba(199,125,255,.16),transparent 60%)}
-.wrap{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:46px 8px 14px;gap:6px;max-width:100%}
+.wrap{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px 8px 10px;gap:4px;max-width:100%}
 .brand{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:30;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);opacity:.6;pointer-events:none}
 .toggle{position:fixed;top:10px;right:12px;z-index:31;width:44px;height:44px;border-radius:50%;border:1px solid var(--chipbd);background:var(--panel);color:var(--ink);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px var(--shadow)}
 h1.title{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(18px,5vw,28px);color:var(--ink);text-align:center;letter-spacing:1px}
 h1.title span{background:linear-gradient(180deg,var(--accent2),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
-.game{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;justify-content:center;width:100%;max-width:340px}
+.game{display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap;justify-content:center;width:100%;max-width:280px}
 @media(max-width:560px){.game{flex-direction:column;align-items:center}.side{width:100%;max-width:300px;flex-direction:row;flex-wrap:wrap;justify-content:center}.side .stat{flex:1;min-width:60px;text-align:center}.side #next{margin:0 auto}.side .btns{width:100%;flex:1 1 100%}}
 .board-box{position:relative;border-radius:14px;overflow:hidden;box-shadow:0 14px 40px var(--shadow);border:1px solid var(--chipbd)}
 #board{display:block;background:var(--panel)}
@@ -27,7 +27,7 @@ h1.title span{background:linear-gradient(180deg,var(--accent2),var(--accent));-w
 .btns{display:flex;gap:8px;flex-wrap:wrap}
 .btns button{flex:1;min-width:54px;padding:14px;border:1px solid var(--chipbd);border-radius:12px;background:var(--panel);color:var(--ink);font-weight:700;font-size:15px;cursor:pointer;box-shadow:0 6px 16px var(--shadow)}
 .btns button:active{transform:scale(.96)}
-.pad{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;width:100%;max-width:320px;margin-top:8px}
+.pad{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;width:100%;max-width:260px;margin-top:4px}
 .pad button{padding:18px 0;border:1px solid var(--chipbd);border-radius:16px;background:var(--panel);color:var(--ink);font-size:26px;font-weight:700;cursor:pointer;box-shadow:0 8px 20px var(--shadow);touch-action:none}
 .pad button:active{transform:scale(.94)}
 .overlay{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:rgba(246,238,240,.78);backdrop-filter:blur(6px);text-align:center;padding:20px}
@@ -35,7 +35,7 @@ body.dark .overlay{background:rgba(10,8,32,.78)}
 .overlay h2{font-family:'Playfair Display',serif;font-size:30px;color:var(--ink)}
 .overlay p{color:var(--muted);font-size:14px}
 .overlay button{padding:12px 28px;border:none;border-radius:12px;background:linear-gradient(90deg,var(--accent2),var(--accent));color:#fff;font-weight:700;font-size:16px;cursor:pointer;box-shadow:0 10px 24px var(--shadow)}
-.hint{font-size:11px;color:var(--muted);text-align:center;max-width:320px;line-height:1.5;padding-bottom:6px}
+.hint{font-size:10px;color:var(--muted);text-align:center;max-width:300px;line-height:1.4;padding-bottom:2px}
 @media(max-width:560px){.side{min-width:96px}.pad{display:grid}}</style></head><body>
 <div class="bg"></div>
 <div class="brand">Foxglen · Katya</div>
@@ -86,7 +86,7 @@ const ctx=board.getContext('2d');
 const nextC=document.getElementById('next');
 const nctx=nextC.getContext('2d');
 let CELL=28;
-function fit(){const avail=Math.min(window.innerWidth-16, 280); const w=Math.max(140, Math.min(avail, 260)); CELL=w/COLS; board.style.width=(CELL*COLS)+'px'; board.style.height=(CELL*ROWS)+'px'; board.width=CELL*COLS; board.height=CELL*ROWS;}
+function fit(){const avail=Math.min(window.innerWidth-12, 250); const w=Math.max(130, Math.min(avail, 230)); CELL=w/COLS; board.style.width=(CELL*COLS)+'px'; board.style.height=(CELL*ROWS)+'px'; board.width=CELL*COLS; board.height=CELL*ROWS;}
 fit(); window.addEventListener('resize',()=>{fit(); draw();});
 
 const SHAPES={
