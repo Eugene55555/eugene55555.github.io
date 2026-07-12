@@ -3,17 +3,33 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'Nunito',sans-serif;color:#e9e6ff;background:linear-gradient(180deg,#080614,#120a2e 50%,#080614);overflow-x:hidden;line-height:1.6}
-/* parallax star layers */
-.stars,.stars2,.stars3{position:fixed;inset:0;z-index:0;pointer-events:none;will-change:transform}
-.stars{background-image:radial-gradient(1.5px 1.5px at 20% 30%,#fff,transparent),radial-gradient(1.5px 1.5px at 70% 60%,#fff,transparent),radial-gradient(1px 1px at 40% 80%,#cde,transparent),radial-gradient(1.5px 1.5px at 90% 20%,#fff,transparent),radial-gradient(1px 1px at 55% 15%,#fff,transparent),radial-gradient(1.5px 1.5px at 15% 70%,#fff,transparent);opacity:.6}
-.stars2{background-image:radial-gradient(2px 2px at 30% 50%,rgba(199,125,255,.9),transparent),radial-gradient(1.5px 1.5px at 80% 35%,rgba(125,249,255,.9),transparent),radial-gradient(2px 2px at 60% 85%,rgba(255,126,182,.8),transparent);opacity:.5}
-.stars3{background-image:radial-gradient(1px 1px at 10% 20%,#fff,transparent),radial-gradient(1px 1px at 85% 70%,#fff,transparent),radial-gradient(1px 1px at 50% 50%,#fff,transparent);opacity:.35}
-/* drifting moon */
-.moon{position:fixed;right:6vw;top:12vh;width:120px;height:120px;border-radius:50%;z-index:0;pointer-events:none;background:radial-gradient(circle at 35% 35%,#fff,#cfc6ff 40%,#7d6bd6 80%);box-shadow:0 0 50px rgba(199,125,255,.5),inset -12px -12px 30px rgba(8,6,20,.6);will-change:transform;opacity:.85}
+/* ===== cosmic background ===== */
+.sky{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.stars,.stars2,.stars3{position:absolute;inset:-20% 0;background-repeat:repeat;will-change:transform,opacity}
+.stars{background-image:radial-gradient(1.6px 1.6px at 20% 30%,#fff,transparent),radial-gradient(1.6px 1.6px at 70% 60%,#fff,transparent),radial-gradient(1px 1px at 40% 80%,#cde,transparent),radial-gradient(1.6px 1.6px at 90% 20%,#fff,transparent),radial-gradient(1px 1px at 55% 15%,#fff,transparent),radial-gradient(1.6px 1.6px at 15% 70%,#fff,transparent);opacity:.7;animation:tw 4s ease-in-out infinite alternate}
+.stars2{background-image:radial-gradient(2px 2px at 30% 50%,rgba(199,125,255,.9),transparent),radial-gradient(1.6px 1.6px at 80% 35%,rgba(125,249,255,.9),transparent),radial-gradient(2px 2px at 60% 85%,rgba(255,126,182,.8),transparent);opacity:.6;animation:tw 6s ease-in-out infinite alternate-reverse}
+.stars3{background-image:radial-gradient(1px 1px at 10% 20%,#fff,transparent),radial-gradient(1px 1px at 85% 70%,#fff,transparent),radial-gradient(1px 1px at 50% 50%,#fff,transparent);opacity:.4;animation:tw 5s ease-in-out infinite alternate}
+@keyframes tw{from{opacity:.35}to{opacity:.85}}
+/* nebulae */
+.neb{position:absolute;border-radius:50%;filter:blur(60px);opacity:.5;will-change:transform}
+.neb1{width:520px;height:520px;left:-120px;top:8%;background:radial-gradient(circle,rgba(199,125,255,.55),transparent 70%);animation:drift1 22s ease-in-out infinite alternate}
+.neb2{width:460px;height:460px;right:-100px;top:40%;background:radial-gradient(circle,rgba(125,249,255,.45),transparent 70%);animation:drift2 26s ease-in-out infinite alternate}
+.neb3{width:600px;height:600px;left:20%;bottom:-10%;background:radial-gradient(circle,rgba(255,126,182,.35),transparent 70%);animation:drift1 30s ease-in-out infinite alternate-reverse}
+@keyframes drift1{from{transform:translate(0,0) scale(1)}to{transform:translate(60px,-40px) scale(1.15)}}
+@keyframes drift2{from{transform:translate(0,0) scale(1)}to{transform:translate(-50px,50px) scale(1.1)}}
+/* comet */
+.comet{position:absolute;top:12%;left:-15%;width:140px;height:2px;background:linear-gradient(90deg,transparent,#fff);border-radius:2px;transform:rotate(18deg);opacity:0;box-shadow:0 0 12px #fff;animation:shoot 9s ease-in infinite}
+.comet:after{content:"";position:absolute;right:-3px;top:-2px;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 14px 3px rgba(125,249,255,.8)}
+@keyframes shoot{0%{left:-15%;top:8%;opacity:0}6%{opacity:1}18%{left:115%;top:60%;opacity:0}100%{left:115%;top:60%;opacity:0}}
+/* moon */
+.moon{position:absolute;right:7vw;top:14vh;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff,#cfc6ff 40%,#7d6bd6 80%);box-shadow:0 0 50px rgba(199,125,255,.5),inset -12px -12px 30px rgba(8,6,20,.6);will-change:transform;opacity:.85}
+/* floating particles */
+.particle{position:absolute;border-radius:50%;background:#fff;opacity:.6;will-change:transform;animation:floatp linear infinite}
+@keyframes floatp{from{transform:translateY(0)}to{transform:translateY(-40px)}}
 .wrap{position:relative;z-index:2;max-width:1000px;margin:0 auto;padding:0 22px}
-.brand{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:5;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--neon);text-shadow:0 0 12px rgba(125,249,255,.6);opacity:.9}
+.brand{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:6;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--neon);text-shadow:0 0 12px rgba(125,249,255,.6);opacity:.9}
 /* hero */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 22px}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:90px 22px 60px}
 .book{width:min(280px,68vw);height:auto;display:block;margin:0 auto 26px;border-radius:12px;box-shadow:0 0 40px rgba(125,249,255,.4),0 0 80px rgba(199,125,255,.3);will-change:transform}
 .hero h1{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(30px,7vw,52px);line-height:1.08;background:linear-gradient(90deg,#7df9ff,#c77dff,#ff7eb6);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero .sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(16px,4vw,22px);color:#cbb6ff;margin:12px 0 18px}
@@ -23,21 +39,21 @@ body{font-family:'Nunito',sans-serif;color:#e9e6ff;background:linear-gradient(18
 .cta.ghost{background:transparent;color:var(--neon);border:1.5px solid var(--neon);box-shadow:0 0 14px rgba(125,249,255,.3);margin-left:12px}
 .scroll-hint{margin-top:40px;font-size:12px;letter-spacing:2px;color:#8f86bd;animation:bob 2s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translateY(0);opacity:.6}50%{transform:translateY(8px);opacity:1}}
-/* scroll-reveal */
+/* reveal */
 .reveal{opacity:0;transform:translateY(40px);transition:opacity 1s ease,transform 1s ease}
 .reveal.in{opacity:1;transform:translateY(0)}
 .quote-band{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(20px,5vw,30px);line-height:1.45;text-align:center;color:#e9e6ff;text-shadow:0 0 14px rgba(199,125,255,.3);padding:18vh 0}
 .quote-band span{color:var(--neon3);text-shadow:0 0 14px rgba(255,126,182,.6)}
 .sec-title{font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(26px,6vw,38px);text-align:center;margin-bottom:8px;color:#fff;text-shadow:0 0 18px rgba(199,125,255,.4)}
 .sec-note{text-align:center;color:#a99fd6;font-style:italic;margin-bottom:34px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-bottom:14vh}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-bottom:8vh}
 .card{background:rgba(255,255,255,.04);padding:26px 20px;border-radius:14px;border:1px solid rgba(125,249,255,.25);box-shadow:inset 0 0 22px rgba(125,249,255,.05);opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
 .card.in{opacity:1;transform:translateY(0)}
 .card .ic{width:36px;height:36px;margin-bottom:12px;filter:drop-shadow(0 0 8px rgba(125,249,255,.6))}
 .card h3{font-family:'Playfair Display',serif;font-weight:600;font-size:18px;margin-bottom:6px;color:#eafcff}
 .card p{font-size:14px;color:#b9b2e0}
-/* journey timeline */
-.journey{padding:14vh 0}
+/* journey */
+.journey{padding:12vh 0}
 .stage{display:flex;gap:24px;align-items:center;margin:8vh 0;opacity:0;transform:translateX(-40px);transition:opacity 1s,transform 1s}
 .stage.in{opacity:1;transform:translateX(0)}
 .stage:nth-child(even){transform:translateX(40px);flex-direction:row-reverse}
@@ -45,16 +61,38 @@ body{font-family:'Nunito',sans-serif;color:#e9e6ff;background:linear-gradient(18
 .stage .dot{flex:0 0 auto;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;background:linear-gradient(135deg,#7df9ff,#c77dff);color:#0a0a1a;box-shadow:0 0 22px rgba(199,125,255,.5)}
 .stage .txt h3{font-family:'Playfair Display',serif;font-weight:600;font-size:22px;color:#fff;margin-bottom:4px}
 .stage .txt p{color:#b9b2e0;font-size:15px;max-width:520px}
-.final{text-align:center;padding:16vh 0 22vh}
+/* gallery */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding-bottom:10vh}
+.thumb{aspect-ratio:3/4;border-radius:12px;border:1px solid rgba(125,249,255,.25);background:linear-gradient(155deg,#1a1140,#0c0820);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px;text-align:center;box-shadow:0 0 20px rgba(199,125,255,.15);opacity:0;transform:scale(.9);transition:opacity .7s,transform .7s}
+.thumb.in{opacity:1;transform:scale(1)}
+.thumb .ti{font-family:'Playfair Display',serif;font-weight:600;font-size:14px;color:#eafcff;margin-bottom:6px}
+.thumb .td{font-size:11px;color:#b9b2e0}
+.thumb svg{width:30px;height:30px;margin-bottom:8px}
+/* faq */
+.faq{padding-bottom:12vh;max-width:700px;margin:0 auto}
+details{background:rgba(255,255,255,.04);border:1px solid rgba(125,249,255,.2);border-radius:12px;padding:4px 18px;margin:14px 0;transition:box-shadow .3s}
+details[open]{box-shadow:0 0 18px rgba(199,125,255,.25)}
+summary{font-family:'Nunito',sans-serif;font-weight:600;color:#eafcff;cursor:pointer;padding:14px 0;list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary:after{content:"+";color:var(--neon);font-size:20px}
+details[open] summary:after{content:"\2212"}
+details p{padding:0 0 16px;color:#b9b2e0;font-size:14px}
+/* brand note */
+.note-band{font-size:16px;color:#bdb6e0;text-align:center;max-width:560px;margin:0 auto;padding:14vh 0}
+.note-band b{color:#fff}
+.final{text-align:center;padding:16vh 0 20vh}
 .final p{color:#bdb6e0;max-width:480px;margin:14px auto 24px}
-footer{position:relative;z-index:2;text-align:center;color:#8f86bd;font-size:13px;padding:30px 0 50px}
+footer{position:relative;z-index:2;text-align:center;color:#8f86bd;font-size:13px;padding:30px 0 60px}
 footer a{color:var(--neon);text-decoration:none}
-@media(max-width:760px){.grid{grid-template-columns:1fr}.cta.ghost{margin:14px 0 0}.stage,.stage:nth-child(even){flex-direction:column;text-align:center;transform:translateY(40px)}.stage.in,.stage:nth-child(even).in{transform:translateY(0)}.moon{width:80px;height:80px;right:4vw}}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.gallery{grid-template-columns:repeat(2,1fr)}.cta.ghost{margin:14px 0 0}.stage,.stage:nth-child(even){flex-direction:column;text-align:center;transform:translateY(40px)}.stage.in,.stage:nth-child(even).in{transform:translateY(0)}.moon{width:80px;height:80px;right:4vw}}
 </style></head><body>
-<div class="stars" id="s1"></div>
-<div class="stars2" id="s2"></div>
-<div class="stars3" id="s3"></div>
-<div class="moon" id="moon"></div>
+<div class="sky">
+  <div class="stars" id="s1"></div>
+  <div class="stars2" id="s2"></div>
+  <div class="stars3" id="s3"></div>
+  <div class="neb neb1"></div><div class="neb neb2"></div><div class="neb neb3"></div>
+  <div class="comet"></div>
+  <div class="moon" id="moon"></div>
+</div>
 <div class="brand">Foxglen Press</div>
 
 <section class="hero">
@@ -101,12 +139,40 @@ footer a{color:var(--neon);text-decoration:none}
   </div>
 </section>
 
+<section class="wrap">
+  <div class="reveal"><h2 class="sec-title">A peek inside</h2><div class="sec-note">every spread, a little moment</div></div>
+  <div class="gallery">
+    <div class="thumb"><svg viewBox="0 0 24 24" fill="none" stroke="#7df9ff" stroke-width="1.6"><path d="M12 21C5 15 5 9 12 11 19 9 19 15 12 21Z"/></svg><div class="ti">Week 20</div><div class="td">halfway &amp; flutters</div></div>
+    <div class="thumb"><svg viewBox="0 0 24 24" fill="none" stroke="#c77dff" stroke-width="1.6"><path d="M12 8a4 4 0 100 8 4 4 0 000-8Z"/></svg><div class="ti">Fruit-size</div><div class="td">banana this week</div></div>
+    <div class="thumb"><svg viewBox="0 0 24 24" fill="none" stroke="#ff7eb6" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="3"/></svg><div class="ti">Snapshot</div><div class="td">energy &amp; mood</div></div>
+    <div class="thumb"><svg viewBox="0 0 24 24" fill="none" stroke="#7df9ff" stroke-width="1.6"><path d="M3 12h18M12 3v18"/><circle cx="12" cy="12" r="9"/></svg><div class="ti">Visit log</div><div class="td">scan &amp; notes</div></div>
+    <div class="thumb"><svg viewBox="0 0 24 24" fill="none" stroke="#c77dff" stroke-width="1.6"><path d="M5 19C12 11 12 5 19 5M19 5h-6M19 5v6"/></svg><div class="ti">Birth plan</div><div class="td">your wishes</div></div>
+    <div class="thumb"><svg viewBox="0 0 24 24" fill="none" stroke="#ff7eb6" stroke-width="1.6"><ellipse cx="12" cy="13" rx="7" ry="5"/><circle cx="18" cy="9" r="2"/></svg><div class="ti">Footprints</div><div class="td">tiny prints</div></div>
+    <div class="thumb"><svg viewBox="0 0 24 24" fill="none" stroke="#7df9ff" stroke-width="1.6"><path d="M12 21C5 15 5 9 12 11 19 9 19 15 12 21Z"/><path d="M9 9h.01M15 9h.01"/></svg><div class="ti">Month 1</div><div class="td">first 12</div></div>
+    <div class="thumb"><svg viewBox="0 0 24 24" fill="none" stroke="#c77dff" stroke-width="1.6"><path d="M3 12h18M12 3v18"/><circle cx="12" cy="12" r="9"/></svg><div class="ti">Letter</div><div class="td">to baby</div></div>
+  </div>
+</section>
+
 <section class="wrap journey">
   <div class="reveal"><h2 class="sec-title">The nine-month journey</h2><div class="sec-note">three seasons of becoming</div></div>
   <div class="stage"><div class="dot">1</div><div class="txt"><h3>First Trimester</h3><p>Weeks 1–13. The quiet beginning — big changes happen softly. Rest, breathe, and let the prompts hold your story.</p></div></div>
   <div class="stage"><div class="dot">2</div><div class="txt"><h3>Second Trimester</h3><p>Weeks 14–27. The golden months — more energy, first kicks, the anatomy scan. Capture every new feeling.</p></div></div>
   <div class="stage"><div class="dot">3</div><div class="txt"><h3>Third Trimester</h3><p>Weeks 28–40. The final stretch — nesting, counting down, getting ready to meet your little one.</p></div></div>
   <div class="stage"><div class="dot">★</div><div class="txt"><h3>Hello, Baby</h3><p>Birth day and the first year — footprints, first smiles, and a thousand tiny firsts to remember.</p></div></div>
+</section>
+
+<section class="wrap">
+  <div class="note-band reveal">Why a <b>keepsake journal</b>? Because the days blur, but the little things — the first kick, the weird craving, the way you felt at week 20 — those are the stories your child will one day ask to hear. This book simply makes room for them.</div>
+</section>
+
+<section class="wrap">
+  <div class="reveal"><h2 class="sec-title">Questions, answered</h2><div class="sec-note">a few things mamas ask</div></div>
+  <div class="faq">
+    <details><summary>Is it good for first-time moms?</summary><p>Yes — every page is written gently, with no assumption of experience. Prompts guide you week by week.</p></details>
+    <details><summary>What size is the printed book?</summary><p>7×10 inches (17.8×25.4 cm), paperback — a comfortable, holdable size with room for photos and writing.</p></details>
+    <details><summary>Do I need to write a lot?</summary><p>Never. A sentence or two is enough. Some weeks you'll just tape an ultrasound and smile.</p></details>
+    <details><summary>Is it a good gift?</summary><p>Beautifully so — for a baby shower, a pregnancy announcement, or the mom-to-be who has everything else.</p></details>
+  </div>
 </section>
 
 <section class="wrap final" id="buy">
@@ -120,7 +186,20 @@ footer a{color:var(--neon);text-decoration:none}
 <script>
 // scroll reveal
 const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.15});
-document.querySelectorAll('.reveal,.card,.stage').forEach(el=>io.observe(el));
+document.querySelectorAll('.reveal,.card,.stage,.thumb').forEach(el=>io.observe(el));
+// floating particles generator
+const sky=document.querySelector('.sky');
+for(let i=0;i<14;i++){
+  const p=document.createElement('div');p.className='particle';
+  const s=Math.random()*2+1;
+  p.style.width=p.style.height=s+'px';
+  p.style.left=Math.random()*100+'%';
+  p.style.top=Math.random()*100+'%';
+  p.style.animationDuration=(Math.random()*8+6)+'s';
+  p.style.animationDelay=(Math.random()*6)+'s';
+  p.style.boxShadow='0 0 '+(s*2)+'px #7df9ff';
+  sky.appendChild(p);
+}
 // parallax
 const s1=document.getElementById('s1'),s2=document.getElementById('s2'),s3=document.getElementById('s3'),moon=document.getElementById('moon'),book=document.querySelector('.book');
 let ticking=false;
@@ -138,4 +217,3 @@ function onScroll(){
 }
 window.addEventListener('scroll',onScroll,{passive:true});
 </script>
-</body></html>
