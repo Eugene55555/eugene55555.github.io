@@ -11,14 +11,15 @@ body{font-family:'Nunito',sans-serif;color:var(--ink);background:var(--foam);ove
 body.dark .bg{background:linear-gradient(180deg,#0a0820 0%,#120a2e 35%,#0a1228 60%,#1a0a26 100%)}
 body.dark .bg:before{background:radial-gradient(60vw 60vw at 20% 20%,rgba(125,249,255,.16),transparent 60%),radial-gradient(50vw 50vw at 80% 70%,rgba(199,125,255,.16),transparent 60%)}
 .wrap{position:relative;z-index:2;min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px;gap:12px}
-.brand{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:30;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);opacity:.85}
+.brand{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:30;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);opacity:.6;pointer-events:none}
 .toggle{position:fixed;top:10px;right:12px;z-index:31;width:44px;height:44px;border-radius:50%;border:1px solid var(--chipbd);background:var(--panel);color:var(--ink);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px var(--shadow)}
 h1.title{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(22px,6vw,34px);color:var(--ink);text-align:center;letter-spacing:1px}
 h1.title span{background:linear-gradient(180deg,var(--accent2),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
 .game{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;justify-content:center}
 .board-box{position:relative;border-radius:14px;overflow:hidden;box-shadow:0 14px 40px var(--shadow);border:1px solid var(--chipbd)}
 #board{display:block;background:var(--panel)}
-.side{display:flex;flex-direction:column;gap:12px;min-width:120px}
+.side{display:flex;flex-direction:column;gap:10px;min-width:120px}
+@media(max-width:560px){.side{flex-direction:row;min-width:0;width:100%;max-width:320px;flex-wrap:wrap;justify-content:center}.side .stat{flex:1;min-width:64px;text-align:center}.side #next{margin:0 auto}}
 .stat{background:var(--panel);border:1px solid var(--chipbd);border-radius:14px;padding:12px 14px;box-shadow:0 8px 24px var(--shadow)}
 .stat .k{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
 .stat .v{font-family:'Playfair Display',serif;font-weight:700;font-size:26px;background:linear-gradient(180deg,var(--accent2),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -39,7 +40,7 @@ body.dark .overlay{background:rgba(10,8,32,.78)}
 </style></head><body>
 <div class="bg"></div>
 <div class="brand">Foxglen · Katya</div>
-<button class="toggle" id="toggle" title="toggle theme">🌙</button>
+<button class="toggle" id="toggle" title="toggle theme">T</button>
 
 <div class="wrap">
   <h1 class="title">Katya's <span>Tetris</span></h1>
@@ -75,7 +76,7 @@ body.dark .overlay{background:rgba(10,8,32,.78)}
 <script>
 // ---- theme ----
 const tg=document.getElementById('toggle');
-function setTheme(d){document.body.classList.toggle('dark',d);tg.textContent=d?'☀️':'🌙';try{localStorage.setItem('katyaTheme',d?'dark':'light')}catch(e){}}
+function setTheme(d){document.body.classList.toggle('dark',d);tg.textContent=d?'☀':'🌙';try{localStorage.setItem('katyaTheme',d?'dark':'light')}catch(e){}}
 tg.addEventListener('click',()=>setTheme(!document.body.classList.contains('dark')));
 try{if(localStorage.getItem('katyaTheme')==='dark')setTheme(true)}catch(e){}
 
@@ -122,7 +123,7 @@ function softDrop(){if(!cur)return;if(!collide(cur.m,cur.x,cur.y+1)){cur.y++;sco
 function hardDrop(){if(!cur)return;while(!collide(cur.m,cur.x,cur.y+1)){cur.y++;score+=2;}updateStats();lock();draw();}
 function rotate(){if(!cur)return;const r=rotateCW(cur.m);let x=cur.x;if(collide(r,x,cur.y)){if(!collide(r,x-1,cur.y))x--;else if(!collide(r,x+1,cur.y))x++;else if(!collide(r,x,cur.y-1)){/*kick up*/}else return;}cur.m=r;cur.x=x;draw();}
 
-function drawCell(c,x,y,cx,cy){cx.fillStyle=c;const pad=1;cx.fillRect(x*CELL+pad,y*CELL+pad,CELL-2*pad,CELL-2*pad);cx.fillStyle='rgba(255,255,255,.18)';cx.fillRect(x*CELL+pad,y*CELL+pad,CELL-2*pad,3);}
+function drawCell(c,x,y,cx,cy){cx.fillStyle=c;const pad=1;cx.fillRect(x*CELL+pad,y*CELL+pad,CELL-2*pad,CELL-2*pad);cx.fillStyle='rgba(255,255,255,.22)';cx.fillRect(x*CELL+pad,y*CELL+pad,CELL-2*pad,Math.max(3,CELL*0.22));cx.strokeStyle='rgba(0,0,0,.18)';cx.strokeRect(x*CELL+pad,y*CELL+pad,CELL-2*pad,CELL-2*pad);}
 
 function draw(){ctx.clearRect(0,0,board.width,board.height);ctx.strokeStyle=getCSS('--grid');for(let y=0;y<ROWS;y++)for(let x=0;x<COLS;x++){ctx.strokeRect(x*CELL,y*CELL,CELL,CELL);}for(let y=0;y<ROWS;y++)for(let x=0;x<COLS;x++){if(grid[y][x])drawCell(COLOR[grid[y][x]],x,y,ctx);}if(cur){const m=cur.m;for(let y=0;y<m.length;y++)for(let x=0;x<m[y].length;x++){if(m[y][x]&&cur.y+y>=0)drawCell(COLOR[cur.s],cur.x+x,cur.y+y,ctx);}}}
 function drawNext(){nctx.clearRect(0,0,nextC.width,nextC.height);if(!next)return;const m=next.m,n=Math.min(m.length,m[0].length);const s=18;const ox=(nextC.width-n*s)/2, oy=(nextC.height-n*s)/2;for(let y=0;y<m.length;y++)for(let x=0;x<m[y].length;x++){if(m[y][x]){nctx.fillStyle=COLOR[next.s];nctx.fillRect(ox+x*s,oy+y*s,s-2,s-2);}}}
