@@ -3,14 +3,15 @@
 body.dark{--ink:#e9e6ff;--muted:#a99fd6;--accent:#ff7eb6;--accent2:#7df9ff;--foam:#0a0820;--panel:rgba(255,255,255,.04);--line:rgba(233,230,255,.14);--chipbd:rgba(125,249,255,.3);--grid:rgba(233,230,255,.06);--shadow:rgba(0,0,0,.35)}
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%}
-body{font-family:'Nunito',sans-serif;color:var(--ink);background:var(--foam);overflow-x:hidden;overflow-y:auto;transition:background .6s,color .6s;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
+html{height:100dvh}
+body{font-family:'Nunito',sans-serif;color:var(--ink);background:var(--foam);height:100dvh;overflow:hidden;transition:background .6s,color .6s;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
 .bg{position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,#eef4f7 0%,#f6eef0 35%,#eef4f7 60%,#f3eef6 100%);background-size:100% 200%;animation:flow 24s ease-in-out infinite alternate}
 @keyframes flow{from{background-position:0 0}to{background-position:0 100%}}
 .bg:before{content:'';position:absolute;inset:0;background:radial-gradient(60vw 60vw at 20% 20%,rgba(168,196,216,.25),transparent 60%),radial-gradient(50vw 50vw at 80% 70%,rgba(232,160,176,.22),transparent 60%);animation:drift 30s ease-in-out infinite alternate}
 @keyframes drift{from{transform:translate(0,0)}to{transform:translate(4%,-3%)}}
 body.dark .bg{background:linear-gradient(180deg,#0a0820 0%,#120a2e 35%,#0a1228 60%,#1a0a26 100%)}
 body.dark .bg:before{background:radial-gradient(60vw 60vw at 20% 20%,rgba(125,249,255,.16),transparent 60%),radial-gradient(50vw 50vw at 80% 70%,rgba(199,125,255,.16),transparent 60%)}
-.wrap{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:38px 4px 6px;gap:6px;max-width:100vw;overflow-x:hidden}
+.wrap{position:relative;z-index:2;height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px 4px 6px;gap:6px;max-width:100vw;overflow:hidden}
 .brand{position:fixed;top:6px;left:50%;transform:translateX(-50%);z-index:30;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);opacity:.55;pointer-events:none}
 .toggle{position:fixed;top:6px;right:8px;z-index:31;width:38px;height:38px;border-radius:50%;border:1px solid var(--chipbd);background:var(--panel);color:var(--ink);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px var(--shadow)}
 h1.title{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(16px,4.5vw,24px);color:var(--ink);text-align:center;letter-spacing:1px;margin-bottom:2px}
@@ -80,7 +81,7 @@ const ctx=board.getContext('2d');
 const nextC=document.getElementById('next');
 const nctx=nextC?nextC.getContext('2d'):null;
 let CELL=28;
-function fit(){const w=Math.max(140, Math.min(window.innerWidth-6, 300)); CELL=w/COLS; board.style.width=(CELL*COLS)+'px'; board.style.height=(CELL*ROWS)+'px'; board.width=CELL*COLS; board.height=CELL*ROWS;}
+function fit(){const vw=window.innerWidth-8;const vh=(window.innerHeight||document.documentElement.clientHeight)-210;const cellW=vw/COLS;const cellH=vh/ROWS;CELL=Math.max(12,Math.floor(Math.min(cellW,cellH,30)));board.style.width=(CELL*COLS)+'px';board.style.height=(CELL*ROWS)+'px';board.width=CELL*COLS;board.height=CELL*ROWS;}
 fit(); window.addEventListener('resize',()=>{fit(); draw();});
 
 const SHAPES={
