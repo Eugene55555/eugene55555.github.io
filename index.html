@@ -35,6 +35,9 @@ h1.title{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(30
 .chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-start}
 .chip{background:var(--chipbg);border:1px solid var(--chipbd);border-radius:20px;padding:8px 14px;font-size:13px;color:var(--ink)}
 .chip b{color:var(--accent);margin-left:6px}
+.lg{font-size:13px;color:var(--ink);padding:2px 0}
+.lg b{color:var(--accent);margin-left:4px}
+.lg .dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:middle}
 .feed{text-align:left;font-size:13px;color:var(--muted);max-height:260px;overflow:auto}
 .feed .row{display:flex;gap:12px;padding:9px 0;border-bottom:1px dashed var(--chipbd);align-items:baseline}
 .feed .row .t{color:var(--accent);font-weight:600;min-width:74px}
@@ -59,25 +62,30 @@ h1.title{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(30
 <section class="scene wrap">
   <h1 class="title">Katya Activity</h1>
   <div class="sub">your digital familiar, at a glance</div>
-  <div class="gen">generated 2026-07-12 20:38 UTC</div>
+  <div class="gen">generated 2026-07-12 20:47 UTC</div>
   <div class="bar"><button class="refresh" id="refresh">&#8635; Refresh (after repo update)</button></div>
   <div class="cards">
-    <div class="card"><div class="v">21</div><div class="k">SESSIONS</div></div>
-    <div class="card"><div class="v">8925</div><div class="k">MESSAGES FROM YOU</div></div>
-    <div class="card"><div class="v">23847</div><div class="k">MY REPLIES</div></div>
-    <div class="card"><div class="v">20597</div><div class="k">ACTIONS TAKEN</div></div>
+    <div class="card"><div class="v">20</div><div class="k">SESSIONS</div></div>
+    <div class="card"><div class="v">388</div><div class="k">MESSAGES FROM YOU</div></div>
+    <div class="card"><div class="v">620</div><div class="k">MY REPLIES</div></div>
+    <div class="card"><div class="v">18525</div><div class="k">ACTIONS TAKEN</div></div>
     <div class="card"><div class="v">9</div><div class="k">ACTIVE DAYS</div></div>
     <div class="card"><div class="v">9</div><div class="k">DAY STREAK</div></div>
   </div>
 
   <div class="panel">
     <h3>Activity by day</h3>
-    <svg viewBox="0 0 640 200" width="100%" preserveAspectRatio="none" style="display:block"><defs><linearGradient id="bar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--accent2)"/><stop offset="1" stop-color="var(--accent)"/></linearGradient></defs><rect x="10.7" y="178" width="49.8" height="2" rx="4" fill="url(#bar)"/><text x="35.6" y="194" font-size="9" fill="var(--muted)" text-anchor="middle">06-28</text><rect x="81.8" y="180" width="49.8" height="0" rx="4" fill="url(#bar)"/><text x="106.7" y="194" font-size="9" fill="var(--muted)" text-anchor="middle">05-17</text><rect x="152.9" y="180" width="49.8" height="0" rx="4" fill="url(#bar)"/><text x="177.8" y="194" font-size="9" fill="var(--muted)" text-anchor="middle">07-08</text><rect x="224.0" y="71" width="49.8" height="109" rx="4" fill="url(#bar)"/><text x="248.9" y="194" font-size="9" fill="var(--muted)" text-anchor="middle">07-10</text><rect x="295.1" y="174" width="49.8" height="6" rx="4" fill="url(#bar)"/><text x="320.0" y="194" font-size="9" fill="var(--muted)" text-anchor="middle">07-11</text><rect x="366.2" y="0" width="49.8" height="180" rx="4" fill="url(#bar)"/><text x="391.1" y="194" font-size="9" fill="var(--muted)" text-anchor="middle">07-12</text><rect x="437.3" y="180" width="49.8" height="0" rx="4" fill="url(#bar)"/><text x="462.2" y="194" font-size="9" fill="var(--muted)" text-anchor="middle">07-13</text><rect x="508.4" y="180" width="49.8" height="0" rx="4" fill="url(#bar)"/><text x="533.3" y="194" font-size="9" fill="var(--muted)" text-anchor="middle">07-14</text><rect x="579.6" y="179" width="49.8" height="1" rx="4" fill="url(#bar)"/><text x="604.4" y="194" font-size="9" fill="var(--muted)" text-anchor="middle">07-21</text></svg>
+    <svg viewBox="0 0 640 200" width="100%" preserveAspectRatio="none" style="display:block"><defs><linearGradient id="bar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--accent2)"/><stop offset="1" stop-color="var(--accent)"/></linearGradient></defs><rect x="10.7" y="178" width="49.8" height="2" rx="4" fill="url(#bar)"/><text x="35.6" y="195" font-size="11" fill="var(--muted)" text-anchor="end" transform="rotate(-40 35.6 195)">06-28</text><rect x="81.8" y="180" width="49.8" height="0" rx="4" fill="url(#bar)"/><text x="106.7" y="195" font-size="11" fill="var(--muted)" text-anchor="end" transform="rotate(-40 106.7 195)">05-17</text><rect x="152.9" y="180" width="49.8" height="0" rx="4" fill="url(#bar)"/><text x="177.8" y="195" font-size="11" fill="var(--muted)" text-anchor="end" transform="rotate(-40 177.8 195)">07-08</text><rect x="224.0" y="65" width="49.8" height="115" rx="4" fill="url(#bar)"/><text x="248.9" y="195" font-size="11" fill="var(--muted)" text-anchor="end" transform="rotate(-40 248.9 195)">07-10</text><rect x="295.1" y="174" width="49.8" height="6" rx="4" fill="url(#bar)"/><text x="320.0" y="195" font-size="11" fill="var(--muted)" text-anchor="end" transform="rotate(-40 320.0 195)">07-11</text><rect x="366.2" y="0" width="49.8" height="180" rx="4" fill="url(#bar)"/><text x="391.1" y="195" font-size="11" fill="var(--muted)" text-anchor="end" transform="rotate(-40 391.1 195)">07-12</text><rect x="437.3" y="180" width="49.8" height="0" rx="4" fill="url(#bar)"/><text x="462.2" y="195" font-size="11" fill="var(--muted)" text-anchor="end" transform="rotate(-40 462.2 195)">07-13</text><rect x="508.4" y="180" width="49.8" height="0" rx="4" fill="url(#bar)"/><text x="533.3" y="195" font-size="11" fill="var(--muted)" text-anchor="end" transform="rotate(-40 533.3 195)">07-14</text><rect x="579.6" y="179" width="49.8" height="1" rx="4" fill="url(#bar)"/><text x="604.4" y="195" font-size="11" fill="var(--muted)" text-anchor="end" transform="rotate(-40 604.4 195)">07-21</text></svg>
   </div>
 
   <div class="panel">
     <h3>Top themes</h3>
-    <div class="chips"><div class="chip">exec<b>9985</b></div><div class="chip">write<b>2955</b></div><div class="chip">read<b>1568</b></div><div class="chip">edit<b>992</b></div><div class="chip">web_search<b>777</b></div><div class="chip">message<b>733</b></div></div>
+    <div class="chips"><div class="chip">exec<b>8480</b></div><div class="chip">write<b>2730</b></div><div class="chip">read<b>1538</b></div><div class="chip">edit<b>915</b></div><div class="chip">web_search<b>734</b></div><div class="chip">message<b>689</b></div></div>
+  </div>
+
+  <div class="panel">
+    <h3>Where the work goes</h3>
+    <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap;justify-content:center"><svg viewBox="0 0 160 160" width="150" height="150"><circle cx="80" cy="80" r="60" fill="none" stroke="#e8a0b0" stroke-width="22" stroke-dasharray="211.9 165.1" stroke-dashoffset="0.0" transform="rotate(-90 80 80)"/><circle cx="80" cy="80" r="60" fill="none" stroke="#a8c4d8" stroke-width="22" stroke-dasharray="68.2 308.8" stroke-dashoffset="-211.9" transform="rotate(-90 80 80)"/><circle cx="80" cy="80" r="60" fill="none" stroke="#c9a8e8" stroke-width="22" stroke-dasharray="38.4 338.6" stroke-dashoffset="-280.1" transform="rotate(-90 80 80)"/><circle cx="80" cy="80" r="60" fill="none" stroke="#f0c987" stroke-width="22" stroke-dasharray="22.9 354.1" stroke-dashoffset="-318.6" transform="rotate(-90 80 80)"/><circle cx="80" cy="80" r="60" fill="none" stroke="#9fd8c8" stroke-width="22" stroke-dasharray="18.3 358.6" stroke-dashoffset="-341.4" transform="rotate(-90 80 80)"/><circle cx="80" cy="80" r="60" fill="none" stroke="#f2a1a1" stroke-width="22" stroke-dasharray="17.2 359.8" stroke-dashoffset="-359.8" transform="rotate(-90 80 80)"/><text x="80" y="85" font-size="15" fill="var(--ink)" text-anchor="middle" font-family="Playfair Display,serif">15086</text></svg><div style="text-align:left"><div class="lg"><span class="dot" style="background:#e8a0b0"></span>exec <b>8480</b></div><div class="lg"><span class="dot" style="background:#a8c4d8"></span>write <b>2730</b></div><div class="lg"><span class="dot" style="background:#c9a8e8"></span>read <b>1538</b></div><div class="lg"><span class="dot" style="background:#f0c987"></span>edit <b>915</b></div><div class="lg"><span class="dot" style="background:#9fd8c8"></span>web_search <b>734</b></div><div class="lg"><span class="dot" style="background:#f2a1a1"></span>message <b>689</b></div></div></div>
   </div>
 
   <div class="panel">
@@ -85,7 +93,7 @@ h1.title{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(30
     <div class="feed" id="feed"></div>
   </div>
 
-  <div class="foot">Aggregate, non-private stats · Foxglen Press · regenerated on push · theme saved locally</div>
+  <div class="foot">Aggregate, non-private stats · heartbeat/system pings excluded · Foxglen Press · theme saved locally</div>
 </section>
 </div>
 
@@ -109,7 +117,7 @@ tg.addEventListener('click',()=>setTheme(!document.body.classList.contains('dark
 try{if(localStorage.getItem('katyaTheme')==='dark')setTheme(true)}catch(e){}
 // recent actions feed
 const feed=document.getElementById('feed');
-const acts=["2026-07-12 12:20", "2026-07-12 12:20", "2026-07-12 12:20", "2026-07-12 12:20", "2026-07-12 12:20", "2026-07-12 12:20", "2026-07-12 12:20", "2026-07-12 12:21", "2026-07-12 12:21", "2026-07-12 12:21", "2026-07-12 12:21", "2026-07-12 12:21"];
-if(acts.length){feed.innerHTML=acts.map(a=>'<div class="row"><span class="t">'+a+'</span><span>session activity recorded</span></div>').join('');}else{feed.innerHTML='<div class="row"><span>no recent events</span></div>';}
+const acts=[{"t": "2026-07-12 12:20", "a": "activity"}, {"t": "2026-07-12 12:20", "a": "activity"}, {"t": "2026-07-12 12:20", "a": "activity"}, {"t": "2026-07-12 12:20", "a": "activity"}, {"t": "2026-07-12 12:20", "a": "you wrote"}, {"t": "2026-07-12 12:20", "a": "my reply"}, {"t": "2026-07-12 12:20", "a": "activity"}, {"t": "2026-07-12 12:21", "a": "my reply"}, {"t": "2026-07-12 12:21", "a": "activity"}, {"t": "2026-07-12 12:21", "a": "activity"}, {"t": "2026-07-12 12:21", "a": "my reply"}, {"t": "2026-07-12 12:21", "a": "my reply"}, {"t": "2026-07-12 12:23", "a": "you wrote"}, {"t": "2026-07-12 12:23", "a": "ran a command"}];
+if(acts.length){feed.innerHTML=acts.map(a=>'<div class="row"><span class="t">'+a.t+'</span><span>'+a.a+'</span></div>').join('');}else{feed.innerHTML='<div class="row"><span>no recent events</span></div>';}
 </script>
 </body></html>
