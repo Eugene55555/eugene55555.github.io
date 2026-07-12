@@ -1,122 +1,141 @@
 <!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Pregnancy Journal for the First-Time Mom — Foxglen Press</title><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Cormorant+Garamond:ital@0;1&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet"><style>
-:root{--neon:#7df9ff;--neon2:#c77dff;--neon3:#ff7eb6;--bg:#080614;--bg2:#120a2e;--card:rgba(255,255,255,.04);--line:rgba(125,249,255,.25)}
+:root{--neon:#7df9ff;--neon2:#c77dff;--neon3:#ff7eb6;--bg:#080614;--bg2:#120a2e}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Nunito',sans-serif;color:#e9e6ff;background:radial-gradient(1200px 700px at 80% -10%,rgba(199,125,255,.18),transparent 60%),radial-gradient(900px 600px at 10% 20%,rgba(125,249,255,.14),transparent 55%),linear-gradient(180deg,#080614,#120a2e 60%,#080614);min-height:100vh;line-height:1.6;overflow-x:hidden}
-.stars{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:radial-gradient(1.5px 1.5px at 20% 30%,#fff,transparent),radial-gradient(1.5px 1.5px at 70% 60%,#fff,transparent),radial-gradient(1px 1px at 40% 80%,#cde,transparent),radial-gradient(1.5px 1.5px at 90% 20%,#fff,transparent),radial-gradient(1px 1px at 55% 15%,#fff,transparent),radial-gradient(1.5px 1.5px at 15% 70%,#fff,transparent);opacity:.5}
-.wrap{position:relative;z-index:1;max-width:1040px;margin:0 auto;padding:0 22px}
-header{padding:42px 0 22px;text-align:center}
-.brand{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--neon);text-shadow:0 0 12px rgba(125,249,255,.6)}
-.hero{display:grid;grid-template-columns:320px 1fr;gap:46px;align-items:center;padding:26px 0 56px}
-.book{width:100%;max-width:320px;height:auto;display:block;margin:0 auto;border-radius:10px;box-shadow:0 0 38px rgba(125,249,255,.35),0 0 70px rgba(199,125,255,.25)}
-.hero h1{font-family:'Playfair Display',serif;font-weight:700;font-size:42px;line-height:1.08;background:linear-gradient(90deg,#7df9ff,#c77dff,#ff7eb6);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero .sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:#cbb6ff;margin:10px 0 18px}
-.hero p.lead{font-size:16px;color:#bdb6e0;max-width:520px}
-.cta{display:inline-block;margin-top:26px;background:linear-gradient(90deg,#7df9ff,#c77dff);color:#0a0a1a;text-decoration:none;padding:14px 30px;border-radius:30px;font-weight:700;letter-spacing:.4px;box-shadow:0 0 22px rgba(125,249,255,.5);transition:transform .15s ease,box-shadow .15s ease}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;color:#e9e6ff;background:linear-gradient(180deg,#080614,#120a2e 50%,#080614);overflow-x:hidden;line-height:1.6}
+/* parallax star layers */
+.stars,.stars2,.stars3{position:fixed;inset:0;z-index:0;pointer-events:none;will-change:transform}
+.stars{background-image:radial-gradient(1.5px 1.5px at 20% 30%,#fff,transparent),radial-gradient(1.5px 1.5px at 70% 60%,#fff,transparent),radial-gradient(1px 1px at 40% 80%,#cde,transparent),radial-gradient(1.5px 1.5px at 90% 20%,#fff,transparent),radial-gradient(1px 1px at 55% 15%,#fff,transparent),radial-gradient(1.5px 1.5px at 15% 70%,#fff,transparent);opacity:.6}
+.stars2{background-image:radial-gradient(2px 2px at 30% 50%,rgba(199,125,255,.9),transparent),radial-gradient(1.5px 1.5px at 80% 35%,rgba(125,249,255,.9),transparent),radial-gradient(2px 2px at 60% 85%,rgba(255,126,182,.8),transparent);opacity:.5}
+.stars3{background-image:radial-gradient(1px 1px at 10% 20%,#fff,transparent),radial-gradient(1px 1px at 85% 70%,#fff,transparent),radial-gradient(1px 1px at 50% 50%,#fff,transparent);opacity:.35}
+/* drifting moon */
+.moon{position:fixed;right:6vw;top:12vh;width:120px;height:120px;border-radius:50%;z-index:0;pointer-events:none;background:radial-gradient(circle at 35% 35%,#fff,#cfc6ff 40%,#7d6bd6 80%);box-shadow:0 0 50px rgba(199,125,255,.5),inset -12px -12px 30px rgba(8,6,20,.6);will-change:transform;opacity:.85}
+.wrap{position:relative;z-index:2;max-width:1000px;margin:0 auto;padding:0 22px}
+.brand{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:5;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--neon);text-shadow:0 0 12px rgba(125,249,255,.6);opacity:.9}
+/* hero */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 22px}
+.book{width:min(280px,68vw);height:auto;display:block;margin:0 auto 26px;border-radius:12px;box-shadow:0 0 40px rgba(125,249,255,.4),0 0 80px rgba(199,125,255,.3);will-change:transform}
+.hero h1{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(30px,7vw,52px);line-height:1.08;background:linear-gradient(90deg,#7df9ff,#c77dff,#ff7eb6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(16px,4vw,22px);color:#cbb6ff;margin:12px 0 18px}
+.hero p.lead{font-size:16px;color:#bdb6e0;max-width:520px;margin:0 auto}
+.cta{display:inline-block;margin-top:30px;background:linear-gradient(90deg,#7df9ff,#c77dff);color:#0a0a1a;text-decoration:none;padding:14px 32px;border-radius:30px;font-weight:700;letter-spacing:.4px;box-shadow:0 0 22px rgba(125,249,255,.5);transition:transform .15s}
 .cta:hover{transform:translateY(-2px);box-shadow:0 0 32px rgba(199,125,255,.7)}
 .cta.ghost{background:transparent;color:var(--neon);border:1.5px solid var(--neon);box-shadow:0 0 14px rgba(125,249,255,.3);margin-left:12px}
-.features{padding:46px 0;border-top:1px solid var(--line)}
-.features h2{font-family:'Playfair Display',serif;font-weight:600;font-size:28px;text-align:center;margin-bottom:6px;color:#fff;text-shadow:0 0 16px rgba(199,125,255,.4)}
-.features .note{text-align:center;color:#a99fd6;font-style:italic;margin-bottom:30px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.card{background:var(--card);padding:24px 20px;border-radius:14px;border:1px solid var(--line);box-shadow:inset 0 0 22px rgba(125,249,255,.05)}
-.card .ic{width:34px;height:34px;margin-bottom:12px;filter:drop-shadow(0 0 8px rgba(125,249,255,.6))}
+.scroll-hint{margin-top:40px;font-size:12px;letter-spacing:2px;color:#8f86bd;animation:bob 2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0);opacity:.6}50%{transform:translateY(8px);opacity:1}}
+/* scroll-reveal */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.quote-band{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(20px,5vw,30px);line-height:1.45;text-align:center;color:#e9e6ff;text-shadow:0 0 14px rgba(199,125,255,.3);padding:18vh 0}
+.quote-band span{color:var(--neon3);text-shadow:0 0 14px rgba(255,126,182,.6)}
+.sec-title{font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(26px,6vw,38px);text-align:center;margin-bottom:8px;color:#fff;text-shadow:0 0 18px rgba(199,125,255,.4)}
+.sec-note{text-align:center;color:#a99fd6;font-style:italic;margin-bottom:34px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-bottom:14vh}
+.card{background:rgba(255,255,255,.04);padding:26px 20px;border-radius:14px;border:1px solid rgba(125,249,255,.25);box-shadow:inset 0 0 22px rgba(125,249,255,.05);opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.card.in{opacity:1;transform:translateY(0)}
+.card .ic{width:36px;height:36px;margin-bottom:12px;filter:drop-shadow(0 0 8px rgba(125,249,255,.6))}
 .card h3{font-family:'Playfair Display',serif;font-weight:600;font-size:18px;margin-bottom:6px;color:#eafcff}
 .card p{font-size:14px;color:#b9b2e0}
-.quote-band{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:16px;text-align:center;padding:38px 24px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;line-height:1.45;color:#e9e6ff;text-shadow:0 0 14px rgba(199,125,255,.3)}
-.quote-band span{color:var(--neon3);text-shadow:0 0 14px rgba(255,126,182,.6)}
-footer{padding:36px 0;text-align:center;color:#8f86bd;font-size:13px}
+/* journey timeline */
+.journey{padding:14vh 0}
+.stage{display:flex;gap:24px;align-items:center;margin:8vh 0;opacity:0;transform:translateX(-40px);transition:opacity 1s,transform 1s}
+.stage.in{opacity:1;transform:translateX(0)}
+.stage:nth-child(even){transform:translateX(40px);flex-direction:row-reverse}
+.stage:nth-child(even).in{transform:translateX(0)}
+.stage .dot{flex:0 0 auto;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;background:linear-gradient(135deg,#7df9ff,#c77dff);color:#0a0a1a;box-shadow:0 0 22px rgba(199,125,255,.5)}
+.stage .txt h3{font-family:'Playfair Display',serif;font-weight:600;font-size:22px;color:#fff;margin-bottom:4px}
+.stage .txt p{color:#b9b2e0;font-size:15px;max-width:520px}
+.final{text-align:center;padding:16vh 0 22vh}
+.final p{color:#bdb6e0;max-width:480px;margin:14px auto 24px}
+footer{position:relative;z-index:2;text-align:center;color:#8f86bd;font-size:13px;padding:30px 0 50px}
 footer a{color:var(--neon);text-decoration:none}
-.section{margin-top:38px}
-.glow-text{text-shadow:0 0 18px rgba(125,249,255,.5)}
-@media(max-width:760px){.hero{grid-template-columns:1fr;text-align:center;gap:26px}.hero p.lead{margin:0 auto}.book{max-width:240px}.cta.ghost{margin:14px 0 0}.grid{grid-template-columns:1fr}.hero h1{font-size:34px}}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.cta.ghost{margin:14px 0 0}.stage,.stage:nth-child(even){flex-direction:column;text-align:center;transform:translateY(40px)}.stage.in,.stage:nth-child(even).in{transform:translateY(0)}.moon{width:80px;height:80px;right:4vw}}
 </style></head><body>
-<div class="stars"></div>
-<header class="wrap"><div class="brand">Foxglen Press</div></header>
+<div class="stars" id="s1"></div>
+<div class="stars2" id="s2"></div>
+<div class="stars3" id="s3"></div>
+<div class="moon" id="moon"></div>
+<div class="brand">Foxglen Press</div>
 
-<section class="wrap hero">
-  <div>
-    <!-- Book cover preview (inline SVG, no spine, responsive) -->
-    <svg class="book" viewBox="0 0 300 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pregnancy Journal cover">
-      <defs>
-        <linearGradient id="cv" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#1a1140"/><stop offset="1" stop-color="#0c0820"/>
-        </linearGradient>
-        <linearGradient id="ttl" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stop-color="#7df9ff"/><stop offset=".5" stop-color="#c77dff"/><stop offset="1" stop-color="#ff7eb6"/>
-        </linearGradient>
-        <radialGradient id="halo" cx="50%" cy="22%" r="40%">
-          <stop offset="0" stop-color="rgba(199,125,255,.55)"/><stop offset="1" stop-color="rgba(199,125,255,0)"/>
-        </radialGradient>
-      </defs>
-      <rect x="6" y="6" width="288" height="408" rx="10" fill="url(#cv)" stroke="url(#ttl)" stroke-width="2"/>
-      <rect x="6" y="6" width="288" height="408" rx="10" fill="url(#halo)"/>
-      <!-- stars -->
-      <g fill="#fff" opacity=".7">
-        <circle cx="40" cy="60" r="1.3"/><circle cx="250" cy="44" r="1.1"/><circle cx="265" cy="120" r="1.4"/>
-        <circle cx="30" cy="150" r="1"/><circle cx="60" cy="350" r="1.2"/><circle cx="245" cy="360" r="1.1"/><circle cx="150" cy="40" r="1"/>
-      </g>
-      <!-- leaf emblem in neon -->
-      <path d="M150 84 C132 98 132 132 150 146 C168 132 168 98 150 84 Z" fill="none" stroke="#7df9ff" stroke-width="2.4" style="filter:drop-shadow(0 0 6px #7df9ff)"/>
-      <line x1="150" y1="92" x2="150" y2="140" stroke="#7df9ff" stroke-width="1.2" style="filter:drop-shadow(0 0 4px #7df9ff)"/>
-      <text x="150" y="196" text-anchor="middle" font-family="Playfair Display, serif" font-weight="700" font-size="27" fill="url(#ttl)">Pregnancy</text>
-      <text x="150" y="228" text-anchor="middle" font-family="Playfair Display, serif" font-weight="700" font-size="27" fill="url(#ttl)">Journal</text>
-      <text x="150" y="256" text-anchor="middle" font-family="Cormorant Garamond, serif" font-weight="700" font-style="italic" font-size="15" fill="#cbb6ff">for the First-Time Mom</text>
-      <line x1="104" y1="276" x2="196" y2="276" stroke="#7df9ff" stroke-width="2" style="filter:drop-shadow(0 0 4px #7df9ff)"/>
-      <text x="150" y="304" text-anchor="middle" font-family="Nunito, sans-serif" font-weight="700" font-size="12" fill="#cbb6ff">Memory Book, Keepsake &amp; Planner</text>
-      <text x="150" y="322" text-anchor="middle" font-family="Nunito, sans-serif" font-weight="700" font-size="12" fill="#cbb6ff">with Milestones &amp; Mom-to-Be Tracker</text>
-      <text x="150" y="402" text-anchor="middle" font-family="Nunito, sans-serif" font-weight="700" font-size="11" letter-spacing="2" fill="#7df9ff">FOXGLEN PRESS</text>
-    </svg>
-  </div>
-  <div>
-    <h1>A guided 9-month keepsake for the first-time mom</h1>
-    <div class="sub">Memory book, planner &amp; baby's first year — in one quiet little journal.</div>
-    <p class="lead">Gentle weekly prompts, fruit-size facts, mood snapshots, ultrasound &amp; photo space, plus prenatal visit forms, a birth-preferences page and your baby's first 12 months. A calm place to remember the whole journey.</p>
-    <a class="cta" href="#buy">Buy on Amazon</a>
-    <a class="cta ghost" href="#inside">See inside</a>
-  </div>
+<section class="hero">
+  <svg class="book" viewBox="0 0 300 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pregnancy Journal cover">
+    <defs>
+      <linearGradient id="cv" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a1140"/><stop offset="1" stop-color="#0c0820"/></linearGradient>
+      <linearGradient id="ttl" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7df9ff"/><stop offset=".5" stop-color="#c77dff"/><stop offset="1" stop-color="#ff7eb6"/></linearGradient>
+      <radialGradient id="halo" cx="50%" cy="22%" r="40%"><stop offset="0" stop-color="rgba(199,125,255,.55)"/><stop offset="1" stop-color="rgba(199,125,255,0)"/></radialGradient>
+    </defs>
+    <rect x="6" y="6" width="288" height="408" rx="10" fill="url(#cv)" stroke="url(#ttl)" stroke-width="2"/>
+    <rect x="6" y="6" width="288" height="408" rx="10" fill="url(#halo)"/>
+    <g fill="#fff" opacity=".7"><circle cx="40" cy="60" r="1.3"/><circle cx="250" cy="44" r="1.1"/><circle cx="265" cy="120" r="1.4"/><circle cx="30" cy="150" r="1"/><circle cx="60" cy="350" r="1.2"/><circle cx="245" cy="360" r="1.1"/></g>
+    <path d="M150 84 C132 98 132 132 150 146 C168 132 168 98 150 84 Z" fill="none" stroke="#7df9ff" stroke-width="2.4" style="filter:drop-shadow(0 0 6px #7df9ff)"/>
+    <line x1="150" y1="92" x2="150" y2="140" stroke="#7df9ff" stroke-width="1.2" style="filter:drop-shadow(0 0 4px #7df9ff)"/>
+    <text x="150" y="196" text-anchor="middle" font-family="Playfair Display, serif" font-weight="700" font-size="27" fill="url(#ttl)">Pregnancy</text>
+    <text x="150" y="228" text-anchor="middle" font-family="Playfair Display, serif" font-weight="700" font-size="27" fill="url(#ttl)">Journal</text>
+    <text x="150" y="256" text-anchor="middle" font-family="Cormorant Garamond, serif" font-weight="700" font-style="italic" font-size="15" fill="#cbb6ff">for the First-Time Mom</text>
+    <line x1="104" y1="276" x2="196" y2="276" stroke="#7df9ff" stroke-width="2" style="filter:drop-shadow(0 0 4px #7df9ff)"/>
+    <text x="150" y="304" text-anchor="middle" font-family="Nunito, sans-serif" font-weight="700" font-size="12" fill="#cbb6ff">Memory Book, Keepsake &amp; Planner</text>
+    <text x="150" y="322" text-anchor="middle" font-family="Nunito, sans-serif" font-weight="700" font-size="12" fill="#cbb6ff">with Milestones &amp; Mom-to-Be Tracker</text>
+    <text x="150" y="402" text-anchor="middle" font-family="Nunito, sans-serif" font-weight="700" font-size="11" letter-spacing="2" fill="#7df9ff">FOXGLEN PRESS</text>
+  </svg>
+  <h1>Pregnancy Journal<br>for the First-Time Mom</h1>
+  <div class="sub">A guided 9-month keepsake, floating through the stars.</div>
+  <p class="lead">Gentle weekly prompts, fruit-size facts, mood snapshots, ultrasound &amp; photo space — plus prenatal visit forms, a birth-preferences page and your baby's first 12 months.</p>
+  <a class="cta" href="#buy">Buy on Amazon</a>
+  <a class="cta ghost" href="#inside">See inside</a>
+  <div class="scroll-hint">scroll to begin ↓</div>
 </section>
 
-<div class="wrap"><div class="quote-band">“A baby is a wish your heart makes.” <span>— kept here, just for you.</span></div></div>
+<div class="wrap">
+  <div class="quote-band reveal">“A baby is a wish your heart makes.” <span>— kept here, just for you.</span></div>
+</div>
 
-<section class="features wrap" id="inside">
-  <h2>What's inside</h2>
-  <div class="note">40 weekly pages · 9 month overviews · baby's first year</div>
+<section class="wrap" id="inside">
+  <div class="reveal"><h2 class="sec-title">What's inside</h2><div class="sec-note">40 weekly pages · 9 month overviews · baby's first year</div></div>
   <div class="grid">
-    <div class="card">
-      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#7df9ff" stroke-width="1.6" style="filter:drop-shadow(0 0 6px #7df9ff)"><path d="M12 21C5 15 5 9 12 11 19 9 19 15 12 21Z"/></svg>
-      <h3>Weekly prompts</h3><p>40 gentle questions with space for photos and an ultrasound snapshot each week.</p>
-    </div>
-    <div class="card">
-      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#c77dff" stroke-width="1.6" style="filter:drop-shadow(0 0 6px #c77dff)"><path d="M12 8a4 4 0 100 8 4 4 0 000-8Z"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>
-      <h3>Fruit-size facts</h3><p>Track baby's size from a poppy seed to a small pumpkin, week by week.</p>
-    </div>
-    <div class="card">
-      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#ff7eb6" stroke-width="1.6" style="filter:drop-shadow(0 0 6px #ff7eb6)"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M4 10h16M10 4v16"/></svg>
-      <h3>Mood snapshot</h3><p>Quick energy / physical / mood check-ins and a weekly win to notice the good.</p>
-    </div>
-    <div class="card">
-      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#7df9ff" stroke-width="1.6" style="filter:drop-shadow(0 0 6px #7df9ff)"><path d="M3 12h18M12 3v18"/><circle cx="12" cy="12" r="9"/></svg>
-      <h3>Prenatal visits</h3><p>Doctor visit forms, weight &amp; belly tracker, and a slot for each scan photo.</p>
-    </div>
-    <div class="card">
-      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#c77dff" stroke-width="1.6" style="filter:drop-shadow(0 0 6px #c77dff)"><path d="M5 19C12 11 12 5 19 5M19 5h-6M19 5v6"/></svg>
-      <h3>Birth &amp; firsts</h3><p>Birth-day details, footprint frames, memorable firsts and a letter to baby.</p>
-    </div>
-    <div class="card">
-      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#ff7eb6" stroke-width="1.6" style="filter:drop-shadow(0 0 6px #ff7eb6)"><path d="M12 21C5 15 5 9 12 11 19 9 19 15 12 21Z"/><path d="M9 9h.01M15 9h.01"/></svg>
-      <h3>First year</h3><p>12 month-by-month pages for baby's milestone photos and little stories.</p>
-    </div>
+    <div class="card"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#7df9ff" stroke-width="1.6" style="filter:drop-shadow(0 0 6px #7df9ff)"><path d="M12 21C5 15 5 9 12 11 19 9 19 15 12 21Z"/></svg><h3>Weekly prompts</h3><p>40 gentle questions with space for photos and an ultrasound snapshot each week.</p></div>
+    <div class="card"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#c77dff" stroke-width="1.6" style="filter:drop-shadow(0 0 6px #c77dff)"><path d="M12 8a4 4 0 100 8 4 4 0 000-8Z"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg><h3>Fruit-size facts</h3><p>Track baby's size from a poppy seed to a small pumpkin, week by week.</p></div>
+    <div class="card"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#ff7eb6" stroke-width="1.6" style="filter:drop-shadow(0 0 6px #ff7eb6)"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M4 10h16M10 4v16"/></svg><h3>Mood snapshot</h3><p>Quick energy / physical / mood check-ins and a weekly win to notice the good.</p></div>
+    <div class="card"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#7df9ff" stroke-width="1.6" style="filter:drop-shadow(0 0 6px #7df9ff)"><path d="M3 12h18M12 3v18"/><circle cx="12" cy="12" r="9"/></svg><h3>Prenatal visits</h3><p>Doctor visit forms, weight &amp; belly tracker, and a slot for each scan photo.</p></div>
+    <div class="card"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#c77dff" stroke-width="1.6" style="filter:drop-shadow(0 0 6px #c77dff)"><path d="M5 19C12 11 12 5 19 5M19 5h-6M19 5v6"/></svg><h3>Birth &amp; firsts</h3><p>Birth-day details, footprint frames, memorable firsts and a letter to baby.</p></div>
+    <div class="card"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#ff7eb6" stroke-width="1.6" style="filter:drop-shadow(0 0 6px #ff7eb6)"><path d="M12 21C5 15 5 9 12 11 19 9 19 15 12 21Z"/><path d="M9 9h.01M15 9h.01"/></svg><h3>First year</h3><p>12 month-by-month pages for baby's milestone photos and little stories.</p></div>
   </div>
 </section>
 
-<section class="wrap section" id="buy" style="text-align:center;padding-bottom:48px">
-  <h2 style="font-family:'Playfair Display',serif;font-weight:600;font-size:26px;color:#fff" class="glow-text">Ready to begin?</h2>
-  <p style="color:#bdb6e0;max-width:480px;margin:12px auto 20px">A quiet, beautiful keepsake — for you, and for the little one you'll one day read it with.</p>
-  <a class="cta" href="#buy">Get your copy</a>
+<section class="wrap journey">
+  <div class="reveal"><h2 class="sec-title">The nine-month journey</h2><div class="sec-note">three seasons of becoming</div></div>
+  <div class="stage"><div class="dot">1</div><div class="txt"><h3>First Trimester</h3><p>Weeks 1–13. The quiet beginning — big changes happen softly. Rest, breathe, and let the prompts hold your story.</p></div></div>
+  <div class="stage"><div class="dot">2</div><div class="txt"><h3>Second Trimester</h3><p>Weeks 14–27. The golden months — more energy, first kicks, the anatomy scan. Capture every new feeling.</p></div></div>
+  <div class="stage"><div class="dot">3</div><div class="txt"><h3>Third Trimester</h3><p>Weeks 28–40. The final stretch — nesting, counting down, getting ready to meet your little one.</p></div></div>
+  <div class="stage"><div class="dot">★</div><div class="txt"><h3>Hello, Baby</h3><p>Birth day and the first year — footprints, first smiles, and a thousand tiny firsts to remember.</p></div></div>
 </section>
 
-<footer class="wrap">
-  <div>© Foxglen Press · Pregnancy Journal for the First-Time Mom</div>
-  <div style="margin-top:6px">Source on <a href="https://github.com/Eugene55555/kdp-j">GitHub</a></div>
-</footer>
+<section class="wrap final" id="buy">
+  <div class="reveal"><h2 class="sec-title">Ready to begin?</h2>
+  <p>A quiet, beautiful keepsake — for you, and for the little one you'll one day read it with.</p>
+  <a class="cta" href="#buy">Buy on Amazon</a></div>
+</section>
+
+<footer class="wrap">© Foxglen Press · Pregnancy Journal for the First-Time Mom<br><span style="margin-top:6px;display:inline-block">Source on <a href="https://github.com/Eugene55555/kdp-j">GitHub</a></span></footer>
+
+<script>
+// scroll reveal
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.15});
+document.querySelectorAll('.reveal,.card,.stage').forEach(el=>io.observe(el));
+// parallax
+const s1=document.getElementById('s1'),s2=document.getElementById('s2'),s3=document.getElementById('s3'),moon=document.getElementById('moon'),book=document.querySelector('.book');
+let ticking=false;
+function onScroll(){
+  if(ticking)return;ticking=true;
+  requestAnimationFrame(()=>{
+    const y=window.scrollY;
+    s1.style.transform='translateY('+(y*0.15)+'px)';
+    s2.style.transform='translateY('+(y*0.30)+'px)';
+    s3.style.transform='translateY('+(y*0.45)+'px)';
+    moon.style.transform='translateY('+(y*0.25)+'px)';
+    if(book)book.style.transform='translateY('+(y*0.08)+'px) scale('+(1-Math.min(y/3000,0.15))+')';
+    ticking=false;
+  });
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+</script>
 </body></html>
