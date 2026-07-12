@@ -3,6 +3,14 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'Nunito',sans-serif;color:#e9e6ff;background:linear-gradient(180deg,#080614,#120a2e 50%,#080614);overflow-x:hidden;line-height:1.6}
+/* scroll progress bar */
+.progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:30;background:linear-gradient(90deg,#7df9ff,#c77dff,#ff7eb6);box-shadow:0 0 12px rgba(199,125,255,.8)}
+/* cursor glow */
+.glow{position:fixed;width:360px;height:360px;border-radius:50%;pointer-events:none;z-index:1;background:radial-gradient(circle,rgba(199,125,255,.16),transparent 70%);transform:translate(-50%,-50%);opacity:0;transition:opacity .4s;mix-blend-mode:screen}
+/* shooting stars */
+.shoot{position:fixed;width:2px;height:2px;border-radius:50%;background:#fff;box-shadow:0 0 8px #fff;z-index:1;opacity:0;pointer-events:none}
+.shoot:before{content:'';position:absolute;top:50%;right:2px;width:80px;height:1.5px;transform:translateY(-50%);background:linear-gradient(90deg,transparent,rgba(125,249,255,.9));filter:drop-shadow(0 0 4px rgba(125,249,255,.8))}
+@keyframes shootFly{0%{opacity:0;transform:translate(0,0)}12%{opacity:1}45%{opacity:1}100%{opacity:0;transform:translate(70vw,22vh)}}
 /* ===== cosmic background ===== */
 .sky{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
 .stars,.stars2,.stars3{position:absolute;inset:-20% 0;background-repeat:repeat;will-change:transform,opacity}
@@ -23,6 +31,9 @@ body{font-family:'Nunito',sans-serif;color:#e9e6ff;background:linear-gradient(18
 @keyframes shoot{0%{left:-15%;top:8%;opacity:0}6%{opacity:1}18%{left:115%;top:60%;opacity:0}100%{left:115%;top:60%;opacity:0}}
 /* moon */
 .moon{position:absolute;right:7vw;top:14vh;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff,#cfc6ff 40%,#7d6bd6 80%);box-shadow:0 0 50px rgba(199,125,255,.5),inset -12px -12px 30px rgba(8,6,20,.6);will-change:transform;opacity:.85}
+.moon:before{content:'';position:absolute;inset:-24px;border-radius:50%;border:1px solid rgba(125,249,255,.22);animation:spin 28s linear infinite}
+.moon:after{content:'';position:absolute;inset:-44px;border-radius:50%;border:1px solid rgba(255,126,182,.16);animation:spin 44s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
 /* floating particles */
 .particle{position:absolute;border-radius:50%;background:#fff;opacity:.6;will-change:transform;animation:floatp linear infinite}
 @keyframes floatp{from{transform:translateY(0)}to{transform:translateY(-40px)}}
@@ -31,12 +42,15 @@ body{font-family:'Nunito',sans-serif;color:#e9e6ff;background:linear-gradient(18
 /* hero */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:90px 22px 60px}
 .book{width:min(280px,68vw);height:auto;display:block;margin:0 auto 26px;border-radius:12px;box-shadow:0 0 40px rgba(125,249,255,.4),0 0 80px rgba(199,125,255,.3);will-change:transform}
-.hero h1{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(30px,7vw,52px);line-height:1.08;background:linear-gradient(90deg,#7df9ff,#c77dff,#ff7eb6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1,.type{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(30px,7vw,52px);line-height:1.08;background:linear-gradient(90deg,#7df9ff,#c77dff,#ff7eb6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.type .caret{display:inline-block;width:.5ch;background:#7df9ff;-webkit-text-fill-color:transparent;color:transparent;animation:blink 1s step-end infinite;box-shadow:0 0 10px #7df9ff;margin-left:2px}
+@keyframes blink{50%{opacity:0}}
 .hero .sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(16px,4vw,22px);color:#cbb6ff;margin:12px 0 18px}
 .hero p.lead{font-size:16px;color:#bdb6e0;max-width:520px;margin:0 auto}
-.cta{display:inline-block;margin-top:30px;background:linear-gradient(90deg,#7df9ff,#c77dff);color:#0a0a1a;text-decoration:none;padding:14px 32px;border-radius:30px;font-weight:700;letter-spacing:.4px;box-shadow:0 0 22px rgba(125,249,255,.5);transition:transform .15s}
-.cta:hover{transform:translateY(-2px);box-shadow:0 0 32px rgba(199,125,255,.7)}
-.cta.ghost{background:transparent;color:var(--neon);border:1.5px solid var(--neon);box-shadow:0 0 14px rgba(125,249,255,.3);margin-left:12px}
+.cta{display:inline-block;margin-top:30px;background:linear-gradient(90deg,#7df9ff,#c77dff);color:#0a0a1a;text-decoration:none;padding:14px 32px;border-radius:30px;font-weight:700;letter-spacing:.4px;box-shadow:0 0 22px rgba(125,249,255,.5);transition:transform .15s,box-shadow .25s,filter .25s}
+.cta:hover{transform:translateY(-2px);box-shadow:0 0 42px rgba(199,125,255,.95);filter:brightness(1.12)}
+.cta.ghost{background:transparent;color:var(--neon);border:1.5px solid var(--neon);box-shadow:0 0 14px rgba(125,249,255,.3);margin-left:12px;transition:transform .15s,box-shadow .25s,background .25s}
+.cta.ghost:hover{transform:translateY(-2px);box-shadow:0 0 32px rgba(125,249,255,.85);background:rgba(125,249,255,.08)}
 .scroll-hint{margin-top:40px;font-size:12px;letter-spacing:2px;color:#8f86bd;animation:bob 2s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translateY(0);opacity:.6}50%{transform:translateY(8px);opacity:1}}
 /* reveal */
@@ -115,7 +129,7 @@ footer a{color:var(--neon);text-decoration:none}
     <text x="150" y="322" text-anchor="middle" font-family="Nunito, sans-serif" font-weight="700" font-size="12" fill="#cbb6ff">with Milestones &amp; Mom-to-Be Tracker</text>
     <text x="150" y="402" text-anchor="middle" font-family="Nunito, sans-serif" font-weight="700" font-size="11" letter-spacing="2" fill="#7df9ff">FOXGLEN PRESS</text>
   </svg>
-  <h1>Pregnancy Journal<br>for the First-Time Mom</h1>
+  <h1 class="type" id="type"></h1>
   <div class="sub">A guided 9-month keepsake, floating through the stars.</div>
   <p class="lead">Gentle weekly prompts, fruit-size facts, mood snapshots, ultrasound &amp; photo space — plus prenatal visit forms, a birth-preferences page and your baby's first 12 months.</p>
   <a class="cta" href="#buy">Buy on Amazon</a>
@@ -216,4 +230,28 @@ function onScroll(){
   });
 }
 window.addEventListener('scroll',onScroll,{passive:true});
+// scroll progress bar
+const prog=document.getElementById('progress');
+function updProgress(){const h=document.documentElement.scrollHeight-window.innerHeight;prog.style.width=(h>0?(window.scrollY/h*100):0)+'%';}
+window.addEventListener('scroll',updProgress,{passive:true});updProgress();
+// cursor glow
+const glow=document.getElementById('glow');
+function moveGlow(x,y){glow.style.left=x+'px';glow.style.top=y+'px';glow.style.opacity='1';}
+window.addEventListener('mousemove',e=>moveGlow(e.clientX,e.clientY),{passive:true});
+window.addEventListener('touchmove',e=>{const t=e.touches[0];if(t)moveGlow(t.clientX,t.clientY);},{passive:true});
+window.addEventListener('mouseleave',()=>glow.style.opacity='0');
+// shooting stars
+const shower=document.getElementById('shower');
+for(let i=0;i<5;i++){
+  const s=document.createElement('div');s.className='shoot';
+  s.style.top=(Math.random()*60)+'vh';
+  s.style.left=(-10+Math.random()*20)+'vw';
+  s.style.animation='shootFly '+(3+Math.random()*3)+'s linear '+(Math.random()*8)+'s infinite';
+  shower.appendChild(s);
+}
+// typewriter
+const typeEl=document.getElementById('type');
+const fullText='Pregnancy Journal';
+let ti=0;
+(function type(){if(ti<=fullText.length){typeEl.textContent=fullText.slice(0,ti);ti++;setTimeout(type,90);}})();
 </script>
