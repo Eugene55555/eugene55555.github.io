@@ -14,23 +14,23 @@ const amazon = 'https://www.amazon.com/dp/B0H6V4X481';
     <div class="grid gap-10 md:grid-cols-5">
       <div class="md:col-span-2">
         <div class="max-w-xs">
-          <p class="text-xs font-bold uppercase tracking-wider text-blue">FAQ</p>
-          <h2 class="mt-2 text-2xl font-bold tracking-tight text-neutral-800 md:text-3xl">Frequently Asked</h2>
+          <p class="text-xs font-bold uppercase tracking-wider text-orange-600">FAQ</p>
+          <h2 class="mt-2 text-2xl font-bold tracking-tight text-neutral-900 md:text-3xl font-serif">Frequently Asked</h2>
         </div>
       </div>
       <div class="md:col-span-3">
         <div class="divide-y divide-neutral-200">
           {faqs.map((f) => (
             <details class="group py-4" name="faq">
-              <summary class="flex w-full cursor-pointer list-none items-center justify-between gap-3 font-semibold text-neutral-800">
+              <summary class="flex w-full cursor-pointer list-none items-center justify-between gap-3 font-semibold text-neutral-900">
                 {f.q}
-                <svg class="h-5 w-5 shrink-0 text-blue transition-transform duration-300 group-open:rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                <svg class="h-5 w-5 shrink-0 text-orange-600 transition-transform duration-300 group-open:rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
               </summary>
               <p class="pb-1 pt-3 text-sm text-neutral-600">{f.a}</p>
             </details>
           ))}
         </div>
-        <a href={amazon} target="_blank" rel="noopener" class="mt-6 inline-flex items-center justify-center rounded-xl bg-orange px-7 py-3.5 font-extrabold text-white shadow-lg shadow-orange/25 transition hover:bg-orange-dark">Get the Paperback — $13.99</a>
+        <a href={amazon} target="_blank" rel="noopener" class="mt-6 inline-flex items-center justify-center rounded-xl bg-orange-500 px-7 py-3.5 font-extrabold text-white shadow-lg shadow-orange-500/25 transition hover:bg-orange-600">Get the Paperback — $13.99</a>
       </div>
     </div>
   </div>
