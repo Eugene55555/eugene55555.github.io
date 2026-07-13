@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ATF-Compliant FFL Bound Book — FFL Acquisition &amp; Disposition Log | Silas Thorne</title>
+<meta name="description" content="Pre-formatted, ATF-compliant FFL Acquisition &amp; Disposition log book built to 27 CFR 478.125. For dealers, gunsmiths &amp; manufacturers who don't gamble with their license.">
+<style>
+  :root{
+    --navy:#0a1f3c; --navy2:#0d2950; --navy3:#13386b;
+    --ink:#0b1b30; --paper:#f7f9fc;
+    --orange:#ff6a13; --orange-d:#e85c08;
+    --gold:#f3b13a; --line:#284a7d; --muted:#9fb3d1;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Helvetica Neue",Arial,sans-serif;color:var(--paper);background:var(--navy);line-height:1.6}
+  h1,h2,h3{font-family:"Georgia","Times New Roman",serif;letter-spacing:.2px}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  a{color:inherit;text-decoration:none}
+
+  /* HERO */
+  .hero{background:radial-gradient(120% 120% at 80% 0%,var(--navy3),var(--navy) 60%);border-bottom:1px solid var(--line);padding:64px 0 48px}
+  .eyebrow{display:inline-block;background:rgba(255,106,19,.14);color:var(--orange);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;border:1px solid rgba(255,106,19,.35);border-radius:4px}
+  .hero h1{font-size:44px;line-height:1.12;margin:18px 0 10px;max-width:760px}
+  .hero h1 b{color:var(--gold)}
+  .hero .sub{color:var(--muted);font-size:18px;max-width:640px}
+  .stock{display:inline-flex;align-items:center;gap:8px;margin-top:18px;background:rgba(46,160,67,.12);color:#62d27a;border:1px solid rgba(98,210,122,.35);padding:6px 12px;border-radius:4px;font-size:13px;font-weight:600}
+  .stock .dot{width:8px;height:8px;border-radius:50%;background:#62d27a}
+
+  /* BUY GRID */
+  .buy{display:grid;grid-template-columns:1fr 380px;gap:36px;align-items:center;margin-top:34px}
+  .covers{display:flex;gap:18px;justify-content:center}
+  .cover{flex:1;max-width:230px;background:linear-gradient(160deg,#16294a,#0c1d38);border:1px solid var(--line);border-radius:6px;padding:16px;box-shadow:0 20px 45px rgba(0,0,0,.4)}
+  .cover .spine{height:300px;border-radius:3px;background:linear-gradient(180deg,#1d3566,#0e2245);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:14px;border:1px solid #2a4a7e}
+  .cover .spine .tag{font-size:10px;letter-spacing:.18em;color:var(--orange);text-transform:uppercase}
+  .cover .spine .ttl{font-family:Georgia,serif;font-size:18px;color:#fff;margin:10px 0;line-height:1.2}
+  .cover .spine .by{font-size:11px;color:var(--muted)}
+  .cover .fmt{margin-top:10px;font-size:12px;color:var(--gold);font-weight:600}
+
+  .panel{background:rgba(8,22,44,.6);border:1px solid var(--line);border-radius:10px;padding:26px}
+  .panel h3{font-size:16px;color:var(--muted);font-weight:400;margin-bottom:6px;font-family:Helvetica,Arial,sans-serif}
+  .price{font-size:40px;font-family:Georgia,serif;color:#fff;font-weight:700}
+  .price small{font-size:15px;color:var(--muted);font-weight:400}
+  .cta{display:block;margin:16px 0 10px;background:var(--orange);color:#fff;font-weight:800;font-size:17px;text-align:center;padding:16px;border-radius:8px;letter-spacing:.02em;transition:transform .08s ease,background .15s ease;box-shadow:0 10px 24px rgba(255,106,19,.3)}
+  .cta:hover{background:var(--orange-d);transform:translateY(-1px)}
+  .cta.alt{background:transparent;border:1px solid var(--orange);color:var(--orange)}
+  .cta.alt:hover{background:rgba(255,106,19,.1)}
+  .micro{font-size:12px;color:var(--muted);text-align:center;margin-top:8px}
+
+  /* SECTIONS */
+  section{padding:54px 0;border-bottom:1px solid rgba(40,74,125,.4)}
+  .sec-light{background:var(--paper);color:var(--ink)}
+  .sec-light h2{color:var(--navy);font-size:30px;margin-bottom:8px}
+  .sec-light p{color:#33455e;max-width:760px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:28px}
+  .card{background:#fff;border:1px solid #dde6f2;border-left:4px solid var(--orange);border-radius:8px;padding:20px}
+  .card .n{font-family:Georgia,serif;font-size:30px;color:var(--orange);font-weight:700}
+  .card h3{font-size:17px;color:var(--navy);margin:6px 0 8px;font-family:Helvetica,Arial,sans-serif}
+  .card p{font-size:14px;color:#42566f}
+  .quote{background:var(--navy);color:var(--paper);font-family:Georgia,serif;font-size:22px;line-height:1.5;border-left:4px solid var(--gold);padding:18px 22px;max-width:820px;margin-top:24px}
+  .quote b{color:var(--gold)}
+  .warn{display:flex;gap:14px;align-items:flex-start;background:rgba(243,177,58,.1);border:1px solid rgba(243,177,58,.4);border-radius:8px;padding:16px;margin-top:22px;font-size:14px;color:#ffd98a}
+  .warn .ic{font-size:22px}
+  .fmt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:26px}
+  .fmt{background:rgba(8,22,44,.5);border:1px solid var(--line);border-radius:10px;padding:22px}
+  .fmt h3{font-size:18px;color:#fff;margin-bottom:4px}
+  .fmt .p{font-family:Georgia,serif;font-size:26px;color:var(--gold);font-weight:700;margin:6px 0}
+  .fmt .d{font-size:13px;color:var(--muted)}
+  .faq{margin-top:24px}
+  .faq .q{font-weight:700;color:#fff;margin-top:16px}
+  .faq .a{font-size:14px;color:var(--muted);margin-top:4px;max-width:780px}
+  .foot{background:var(--navy);color:var(--muted);font-size:13px;text-align:center;padding:30px 0}
+  .foot a{color:var(--orange)}
+  @media(max-width:860px){
+    .buy{grid-template-columns:1fr}.covers{margin-bottom:10px}
+    .grid3,.fmt-grid{grid-template-columns:1fr}
+    .hero h1{font-size:34px}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">27 CFR &sect; 478.125 Compliant</span>
+    <h1>The ATF Walks In.<br>Your <b>Bound Book</b> Better Be Ready.</h1>
+    <p class="sub">The FFL Acquisition &amp; Disposition Book — a pre-formatted, ATF-compliant A&amp;D log ledger built for dealers, gunsmiths &amp; manufacturers who don't gamble with their license.</p>
+    <span class="stock"><span class="dot"></span> In Stock — ships from Amazon</span>
+
+    <div class="buy">
+      <div class="covers">
+        <div class="cover">
+          <div class="spine"><div class="tag">Paperback</div><div class="ttl">FFL Acquisition &amp; Disposition Book</div><div class="by">Silas Thorne</div></div>
+          <div class="fmt">Everyday write-in log · 120 pp</div>
+        </div>
+        <div class="cover">
+          <div class="spine" style="background:linear-gradient(180deg,#241832,#120a1f)"><div class="tag">Hardcover</div><div class="ttl">FFL Acquisition &amp; Disposition Book</div><div class="by">Silas Thorne</div></div>
+          <div class="fmt">Archive grade · permanent file</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Paperback — working copy</h3>
+        <div class="price">$13.99</div>
+        <a class="cta" href="https://www.amazon.com/dp/B0H6V4X481" target="_blank" rel="noopener">Buy Paperback on Amazon</a>
+        <h3 style="margin-top:18px">Hardcover — archive grade</h3>
+        <div class="price">$20.99</div>
+        <a class="cta alt" href="https://www.amazon.com/dp/B0H6VSF6S6" target="_blank" rel="noopener">Buy Hardcover on Amazon</a>
+        <div class="micro">Independently published · 120 pages</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- WHY -->
+<section class="sec-light">
+  <div class="wrap">
+    <h2>The Reality</h2>
+    <p>Inspections can be unannounced. One missing entry, one loose-leaf sheet, one faded log — and your license is on the line.</p>
+    <div class="grid3">
+      <div class="card"><div class="n">01</div><h3>Unannounced inspections</h3><p>ATF compliance inspections can happen without warning. "I'll organize it later" is not a plan.</p></div>
+      <div class="card"><div class="n">02</div><h3>Loose-leaf gets rejected</h3><p>Regulations call for a bound record, not a stack of printable sheets. A proper bound book removes the doubt.</p></div>
+      <div class="card"><div class="n">03</div><h3>DIY eats your hours</h3><p>Building your own spreadsheet or notebook from scratch costs time you should spend running the shop.</p></div>
+      <div class="card"><div class="n">04</div><h3>Audit anxiety is real</h3><p>Most dealers aren't worried about doing wrong — they're worried their records won't pass muster. This book fixes that.</p></div>
+      <div class="card"><div class="n">05</div><h3>Compliance-first layout</h3><p>Built from 27 CFR 478.125 and works backward — not a repurposed journal.</p></div>
+      <div class="card"><div class="n">06</div><h3>Plain-English reference</h3><p>Key compliance points noted in plain language so the "why" is never a mystery.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INSIDE -->
+<section>
+  <div class="wrap">
+    <h2 style="font-size:30px;color:#fff">Every Field an Inspector Looks For</h2>
+    <p style="color:var(--muted);max-width:760px">Pre-formatted acquisition &amp; disposition columns — just write it down, the structure is already correct.</p>
+    <div class="grid3">
+      <div class="card" style="background:rgba(8,22,44,.5);border-color:var(--line);border-left-color:var(--gold)"><div class="n" style="color:var(--gold)">01</div><h3 style="color:#fff">A&amp;D columns, done right</h3><p>Acquisition and disposition laid out side by side, exactly the way records are expected to read.</p></div>
+      <div class="card" style="background:rgba(8,22,44,.5);border-color:var(--line);border-left-color:var(--gold)"><div class="n" style="color:var(--gold)">02</div><h3 style="color:#fff">Date · Name · Address · Serial</h3><p>Dedicated fields for every required data point — no guessing what goes where.</p></div>
+      <div class="card" style="background:rgba(8,22,44,.5);border-color:var(--line);border-left-color:var(--gold)"><div class="n" style="color:var(--gold)">03</div><h3 style="color:#fff">Bound, not loose-leaf</h3><p>A proper bound book format — the kind inspectors expect to see, not a ring binder.</p></div>
+      <div class="card" style="background:rgba(8,22,44,.5);border-color:var(--line);border-left-color:var(--gold)"><div class="n" style="color:var(--gold)">04</div><h3 style="color:#fff">120 pages of logs</h3><p>Enough room for a real volume of business without running out mid-year.</p></div>
+      <div class="card" style="background:rgba(8,22,44,.5);border-color:var(--line);border-left-color:var(--gold)"><div class="n" style="color:var(--gold)">05</div><h3 style="color:#fff">Notes space per entry</h3><p>A line for context on every transaction — transfers, returns, corrections, anything.</p></div>
+      <div class="card" style="background:rgba(8,22,44,.5);border-color:var(--line);border-left-color:var(--gold)"><div class="n" style="color:var(--gold)">06</div><h3 style="color:#fff">Two formats</h3><p>Paperback for the counter, hardcover for the permanent file. Same book, your call.</p></div>
+    </div>
+    <div class="quote">"Each licensee shall record the receipt and disposition of each firearm... in a bound record... with the date of receipt, the name and address of the person, the firearm's serial number, and the disposition information." <b>— 27 CFR &sect; 478.125</b></div>
+    <div class="warn"><span class="ic">&#9888;</span><div>Compliance note: no log book is individually "approved" by ATF. This book is formatted to match the record layout inspectors look for under 27 CFR 478.125. It is a compliance tool, not legal advice — verify current text at eCFR.gov.</div></div>
+  </div>
+</section>
+
+<!-- FORMATS -->
+<section class="sec-light">
+  <div class="wrap">
+    <h2>Choose Your Format</h2>
+    <p>Both are the same ATF-compliant log. Pick the one that fits how you keep records.</p>
+    <div class="fmt-grid">
+      <div class="fmt">
+        <h3>Paperback — working copy</h3>
+        <div class="p">$13.99</div>
+        <div class="d">The everyday write-in log for the counter and the bench. 120 pages, lay it open and log each transaction as it happens.</div>
+        <a class="cta" style="margin-top:16px" href="https://www.amazon.com/dp/B0H6V4X481" target="_blank" rel="noopener">Buy Paperback $13.99</a>
+      </div>
+      <div class="fmt">
+        <h3>Hardcover — archive grade</h3>
+        <div class="p">$20.99</div>
+        <div class="d">The durable master file that stays intact for years of compliance. Built to last as long as the records must be kept.</div>
+        <a class="cta" style="margin-top:16px" href="https://www.amazon.com/dp/B0H6VSF6S6" target="_blank" rel="noopener">Buy Hardcover $20.99</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="wrap">
+    <h2 style="font-size:30px;color:#fff">Frequently Asked</h2>
+    <div class="faq">
+      <div class="q">Do FFL holders have to keep acquisition and disposition records?</div>
+      <div class="a">Yes. Federal law requires licensed firearms dealers to maintain acquisition and disposition records under 27 CFR 478.125.</div>
+      <div class="q">What does 27 CFR 478.125 require?</div>
+      <div class="a">Dealers must record, for each firearm acquired and disposed of, the date, name and address of the person, and firearm/serial details in a bound format. This log book is pre-formatted to that layout.</div>
+      <div class="q">Is this book "ATF approved"?</div>
+      <div class="a">No log book is individually "approved" by ATF. This book is formatted to match the record layout inspectors look for under 27 CFR 478.125. A compliance tool, not legal advice.</div>
+      <div class="q">Paperback or Hardcover — which should I get?</div>
+      <div class="a">Paperback ($13.99) is the everyday write-in log. Hardcover ($20.99) is the durable, archival option. Many dealers keep a hardcover master and a paperback working copy.</div>
+      <div class="q">How many pages is the book?</div>
+      <div class="a">120 pages, pre-formatted for acquisition and disposition entries with space for dates, names, addresses, and serial numbers.</div>
+    </div>
+    <a class="cta" style="max-width:340px;margin-top:26px" href="https://www.amazon.com/dp/B0H6V4X481" target="_blank" rel="noopener">Get the Paperback — $13.99</a>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">FFL Acquisition &amp; Disposition Book — Silas Thorne · Formatted to 27 CFR &sect; 478.125 · <a href="https://www.amazon.com/dp/B0H6V4X481" target="_blank" rel="noopener">Paperback</a> · <a href="https://www.amazon.com/dp/B0H6VSF6S6" target="_blank" rel="noopener">Hardcover</a></div>
+</footer>
+
+</body>
+</html>
