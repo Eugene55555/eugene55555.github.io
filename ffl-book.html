@@ -10,11 +10,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#ffffff; --bg2:#fafafa; --bg3:#f5f5f5; --bg-blue:#f4f8ff;
+    --bg:#ffffff; --bg2:#f7f8fa; --bg3:#f1f3f6; --bg-blue:#f4f8ff;
     --ink:#171717; --ink-soft:#404040; --muted:#6a7282;
     --blue:#155dfc; --blue-d:#0f4ad1;
     --orange:#ff512f; --orange-d:#e8401f;
-    --border:#e6e6e6; --border-2:#d4d4d4;
+    --yellow:#f09819; --yellow-soft:#fff6e0;
+    --border:#e6e8ec; --border-2:#d4d8de;
     --green-ok:#16a34a;
   }
   *{box-sizing:border-box;margin:0;padding:0;max-width:100%}
@@ -23,32 +24,43 @@
   h1,h2,h3,.serif{font-family:"Lora",Georgia,serif;font-weight:700;letter-spacing:.2px;overflow-wrap:break-word}
   a{color:inherit;text-decoration:none}
   img{max-width:100%;height:auto;display:block}
-  .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 20px}
+  .wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 20px}
+  section{padding:60px 0;border-bottom:1px solid var(--border)}
 
-  /* NAV */
-  .nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
-  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+  /* NAV (pill, like screwfast) */
+  .nav{position:sticky;top:14px;z-index:50;padding:0 14px;margin-top:14px}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);border:1px solid rgba(240,152,25,.35);border-radius:36px;padding:10px 16px;box-shadow:0 8px 28px rgba(15,23,42,.06)}
   .brand{display:flex;align-items:center;gap:9px;font-family:"Lora",serif;font-weight:700;font-size:17px;color:var(--blue)}
-  .brand .mark{width:26px;height:26px;border-radius:7px;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}
-  .nav a.buy{background:var(--blue);color:#fff;font-weight:700;font-size:14px;padding:9px 16px;border-radius:9px;transition:background .15s}
-  .nav a.buy:hover{background:var(--blue-d)}
+  .brand .mark{width:28px;height:28px;border-radius:8px;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}
+  .nav-links{display:flex;align-items:center;gap:6px}
+  .nav-links a.lk{font-size:14px;font-weight:500;color:var(--ink-soft);padding:8px 12px;border-radius:9px;transition:background .15s,color .15s}
+  .nav-links a.lk:hover{background:var(--bg3);color:var(--ink)}
+  .nav-links a.buy{background:var(--blue);color:#fff;font-weight:700;font-size:14px;padding:9px 16px;border-radius:999px;transition:background .15s}
+  .nav-links a.buy:hover{background:var(--blue-d)}
+  .burger{display:none;width:40px;height:40px;border:none;background:var(--bg3);border-radius:999px;cursor:pointer;align-items:center;justify-content:center;color:var(--ink-soft)}
+  .burger span{display:block;width:18px;height:2px;background:currentColor;position:relative}
+  .burger span:before,.burger span:after{content:"";position:absolute;left:0;width:18px;height:2px;background:currentColor}
+  .burger span:before{top:-6px}.burger span:after{top:6px}
+  .mobile-menu{display:none;margin-top:10px;background:#fff;border:1px solid var(--border);border-radius:18px;padding:12px;box-shadow:0 14px 34px rgba(15,23,42,.1)}
+  .mobile-menu.open{display:block}
+  .mobile-menu a{display:block;padding:12px 14px;border-radius:10px;font-weight:500;color:var(--ink-soft)}
+  .mobile-menu a:hover{background:var(--bg3)}
+  .mobile-menu a.buy{background:var(--blue);color:#fff;text-align:center;margin-top:6px;font-weight:700}
 
   /* HERO */
-  .hero{background:linear-gradient(180deg,#ffffff 0%,#eef4ff 100%);color:var(--ink);padding:56px 0 48px;border-bottom:1px solid var(--border)}
+  .hero{background:linear-gradient(180deg,#ffffff 0%,#eaf1ff 100%);color:var(--ink);padding:54px 0 48px}
   .eyebrow{display:inline-block;background:rgba(21,93,252,.1);color:var(--blue);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:6px 13px;border:1px solid rgba(21,93,252,.25);border-radius:999px}
-  .hero h1{font-size:clamp(30px,4.6vw,48px);line-height:1.12;margin:18px 0 12px;max-width:780px;color:var(--ink)}
+  .hero h1{font-size:clamp(30px,4.6vw,48px);line-height:1.12;margin:18px 0 12px;max-width:780px}
   .hero h1 b{color:var(--orange)}
   .hero .sub{color:var(--ink-soft);font-size:clamp(15px,2vw,18px);max-width:600px}
   .stock{display:inline-flex;align-items:center;gap:8px;margin-top:16px;background:rgba(22,163,74,.1);color:var(--green-ok);border:1px solid rgba(22,163,74,.3);padding:6px 13px;border-radius:999px;font-size:13px;font-weight:600}
   .stock .dot{width:8px;height:8px;border-radius:50%;background:var(--green-ok)}
-
   .buy{display:grid;grid-template-columns:1fr 330px;gap:30px;align-items:center;margin-top:34px}
   .buy>*{min-width:0}
   .covers{display:flex;gap:18px;justify-content:center;min-width:0}
   .cover{flex:1 1 0;min-width:0;max-width:210px;background:#fff;border:1px solid var(--border);border-radius:14px;padding:12px;box-shadow:0 16px 36px rgba(15,23,42,.12)}
   .cover img{width:100%;border-radius:5px;box-shadow:0 8px 18px rgba(0,0,0,.18)}
   .cover .fmt{margin-top:9px;font-size:12px;color:var(--muted);font-weight:600;text-align:center}
-
   .panel{background:#fff;border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:0 16px 36px rgba(15,23,42,.08)}
   .panel h3{font-size:14px;color:var(--muted);font-weight:500;margin-bottom:4px}
   .price{font-size:36px;font-family:"Lora",serif;color:var(--ink);font-weight:700}
@@ -59,37 +71,50 @@
   .cta.alt:hover{background:rgba(255,81,47,.08)}
   .micro{font-size:12px;color:var(--muted);text-align:center;margin-top:8px}
 
-  /* STATS */
+  /* STATS bar */
   .stats{background:var(--bg3);border-bottom:1px solid var(--border)}
   .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:30px 20px}
   .stat{text-align:center}
   .stat .v{font-family:"Lora",serif;font-size:30px;font-weight:700;color:var(--blue)}
   .stat .l{font-size:13px;color:var(--ink-soft);margin-top:2px}
 
-  /* SECTIONS */
-  section{padding:60px 0;border-bottom:1px solid var(--border)}
-  .sec-head{max-width:680px;margin-bottom:30px}
+  /* section head */
+  .sec-head{max-width:700px;margin-bottom:30px}
   .sec-head .tag{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
   .sec-head h2{font-size:clamp(24px,3.2vw,32px);color:var(--ink);margin:8px 0 6px}
   .sec-head p{color:var(--ink-soft);font-size:15.5px}
 
-  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  .grid3>*{min-width:0}
+  .grid3,.grid4{display:grid;gap:18px}
+  .grid3{grid-template-columns:repeat(3,1fr)}
+  .grid4{grid-template-columns:repeat(4,1fr)}
+  .grid3>*,.grid4>*{min-width:0}
   .card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px 20px;transition:box-shadow .18s,transform .18s;min-width:0}
   .card:hover{box-shadow:0 14px 30px rgba(15,23,42,.08);transform:translateY(-2px)}
   .card .ic{width:42px;height:42px;border-radius:11px;background:rgba(21,93,252,.1);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;margin-bottom:14px}
   .card h3{font-size:17px;color:var(--ink);margin-bottom:6px;font-family:"Inter",sans-serif;font-weight:700}
   .card p{font-size:14px;color:var(--ink-soft)}
 
-  /* LIGHT features alt */
-  .sec-alt{background:var(--bg2)}
-  .sec-alt .card .ic{background:rgba(255,81,47,.1);color:var(--orange)}
+  /* trusted badges */
+  .trusted{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+  .badge-pill{background:var(--bg3);border:1px solid var(--border);border-radius:999px;padding:10px 18px;font-size:14px;font-weight:600;color:var(--ink-soft)}
+
+  /* scenario / testimonial */
+  .scn{background:var(--blue);color:#fff;border-radius:18px;padding:34px;display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:center;margin-top:30px}
+  .scn .q{font-family:"Lora",serif;font-size:22px;line-height:1.5}
+  .scn .q b{color:#ffd9a0}
+  .scn .who{margin-top:16px;font-size:14px;color:#cdd8ff}
+  .scn .metrics{display:grid;gap:14px}
+  .scn .m{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:14px 16px}
+  .scn .m .v{font-family:"Lora",serif;font-size:26px;font-weight:700;color:#ffd9a0}
+  .scn .m .l{font-size:13px;color:#cdd8ff}
+  .scn .note{font-size:12px;color:#bcd0ff;margin-top:12px}
+
   .quote{background:var(--bg-blue);color:var(--ink);font-family:"Lora",serif;font-size:clamp(17px,2.3vw,21px);line-height:1.55;border-left:4px solid var(--blue);border-radius:0 12px 12px 0;padding:20px 24px;max-width:840px}
   .quote b{color:var(--blue)}
   .warn{display:flex;gap:14px;align-items:flex-start;background:#fff6f1;border:1px solid rgba(255,81,47,.35);border-radius:12px;padding:16px 18px;margin-top:26px;font-size:14px;color:#9a4423}
   .warn .ic{font-size:22px}
 
-  /* PRICING */
+  /* pricing */
   .fmt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:760px}
   .fmt-grid>*{min-width:0}
   .fmt{background:#fff;border:1px solid var(--border);border-radius:16px;padding:26px 24px;position:relative;box-shadow:0 10px 26px rgba(15,23,42,.06)}
@@ -111,8 +136,8 @@
   .faq .a{padding:0 0 16px;font-size:14px;color:var(--ink-soft)}
 
   /* FOOTER */
-  .foot{background:#0f1c3f;color:#b9c6d8;padding:46px 0 30px;font-size:14px}
-  .foot .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:24px}
+  .foot{background:#0f1c3f;color:#b9c6d8;padding:46px 0 30px;font-size:14px;border-bottom:none}
+  .foot .cols{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:24px}
   .foot h4{color:#fff;font-family:"Inter",sans-serif;font-size:14px;font-weight:700;margin-bottom:10px;letter-spacing:.04em}
   .foot a{color:#c7d3e6;display:block;padding:4px 0;font-size:13.5px}
   .foot a:hover{color:#fff}
@@ -121,10 +146,14 @@
   .foot .copy{border-top:1px solid rgba(255,255,255,.12);margin-top:30px;padding-top:18px;font-size:12.5px;color:#8fa0bd}
 
   @media(max-width:900px){
+    .nav-links{display:none}
+    .burger{display:flex}
     .buy{grid-template-columns:1fr}
-    .grid3,.fmt-grid{grid-template-columns:1fr}
+    .grid3,.grid4{grid-template-columns:1fr}
+    .fmt-grid{grid-template-columns:1fr}
+    .scn{grid-template-columns:1fr}
     .stats .wrap{grid-template-columns:repeat(2,1fr)}
-    .foot .cols{grid-template-columns:1fr}
+    .foot .cols{grid-template-columns:1fr 1fr}
     .hero h1{font-size:28px}
   }
 </style>
@@ -132,12 +161,26 @@
 <body>
 
 <!-- NAV -->
-<nav class="nav">
-  <div class="wrap">
+<div class="nav">
+  <div class="nav-inner wrap">
     <a class="brand" href="#top"><span class="mark">FFL</span> Bound Book</a>
+    <div class="nav-links">
+      <a class="lk" href="#why">Why</a>
+      <a class="lk" href="#inside">Inside</a>
+      <a class="lk" href="#formats">Formats</a>
+      <a class="lk" href="#faq">FAQ</a>
+      <a class="buy" href="https://www.amazon.com/dp/B0H6V4X481" target="_blank" rel="noopener">Buy on Amazon</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+  </div>
+  <div class="mobile-menu wrap" id="mobileMenu">
+    <a href="#why">Why</a>
+    <a href="#inside">Inside</a>
+    <a href="#formats">Formats</a>
+    <a href="#faq">FAQ</a>
     <a class="buy" href="https://www.amazon.com/dp/B0H6V4X481" target="_blank" rel="noopener">Buy on Amazon</a>
   </div>
-</nav>
+</div>
 
 <!-- HERO -->
 <header class="hero" id="top">
@@ -182,27 +225,44 @@
   </div>
 </div>
 
-<!-- WHY -->
-<section>
+<!-- TRUSTED -->
+<section id="why">
   <div class="wrap">
     <div class="sec-head">
-      <div class="tag">The Reality</div>
-      <h2>Why Dealers Don't Gamble on Records</h2>
-      <p>Inspections can be unannounced. One missing entry, one loose-leaf sheet, one faded log — and your license is on the line.</p>
+      <div class="tag">Trusted by</div>
+      <h2>Chosen by FFL Holders Who Don't Gamble</h2>
+      <p>From single-location gunsmiths to high-volume dealers — the same compliance problem, the same simple answer.</p>
     </div>
-    <div class="grid3">
-      <div class="card"><div class="ic">!</div><h3>Unannounced inspections</h3><p>ATF compliance inspections can happen without warning. "I'll organize it later" is not a plan.</p></div>
-      <div class="card"><div class="ic">✕</div><h3>Loose-leaf gets rejected</h3><p>Regulations call for a bound record, not a stack of printable sheets. A proper bound book removes the doubt.</p></div>
-      <div class="card"><div class="ic">⏱</div><h3>DIY eats your hours</h3><p>Building your own spreadsheet or notebook from scratch costs time you should spend running the shop.</p></div>
-      <div class="card"><div class="ic">%</div><h3>Audit anxiety is real</h3><p>Most dealers aren't worried about doing wrong — they're worried their records won't pass muster. This book fixes that.</p></div>
-      <div class="card"><div class="ic">§</div><h3>Compliance-first layout</h3><p>Built from 27 CFR 478.125 and works backward — not a repurposed journal.</p></div>
-      <div class="card"><div class="ic">i</div><h3>Plain-English reference</h3><p>Key compliance points noted in plain language so the "why" is never a mystery.</p></div>
+    <div class="trusted">
+      <span class="badge-pill">FFL Dealers</span>
+      <span class="badge-pill">Gunsmiths</span>
+      <span class="badge-pill">Manufacturers</span>
+      <span class="badge-pill">Range Shops</span>
+      <span class="badge-pill">Collectors with FFL</span>
+      <span class="badge-pill">Pawn &amp; Gun</span>
     </div>
   </div>
 </section>
 
-<!-- WHAT'S INSIDE (alt light) -->
-<section class="sec-alt">
+<!-- MEETING DEMANDS (4 cards) -->
+<section style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="tag">The Reality</div>
+      <h2>Meeting Compliance Demands</h2>
+      <p>ATF record-keeping has its own quirks. We tackle them the way the regulation reads — not with a repurposed notebook.</p>
+    </div>
+    <div class="grid4">
+      <div class="card"><div class="ic">!</div><h3>Unannounced inspections</h3><p>ATF compliance inspections can happen without warning. "I'll organize it later" is not a plan.</p></div>
+      <div class="card"><div class="ic">✕</div><h3>Loose-leaf gets rejected</h3><p>Regulations call for a bound record, not a stack of printable sheets. A proper bound book removes the doubt.</p></div>
+      <div class="card"><div class="ic">⏱</div><h3>Simplicity &amp; affordability</h3><p>An easy-to-use, low-cost log that keeps you compliant without a software subscription or monthly fee.</p></div>
+      <div class="card"><div class="ic">i</div><h3>Plain-English reference</h3><p>Key compliance points noted in plain language so the "why" is never a mystery at audit time.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BUILT FOR WORKFLOW (3 blocks) -->
+<section>
   <div class="wrap">
     <div class="sec-head">
       <div class="tag">Built In</div>
@@ -222,8 +282,30 @@
   </div>
 </section>
 
-<!-- FORMATS / PRICING -->
-<section>
+<!-- SCENARIO / TESTIMONIAL -->
+<section style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="tag">A Dealer Scenario</div>
+      <h2>What "Ready" Looks Like</h2>
+    </div>
+    <div class="scn">
+      <div>
+        <div class="q">"The inspector asked for the acquisition and disposition record. I pulled the <b>bound book</b>, flipped to the date, and every line was already in the right column. No scrambling, no spreadsheets — just the log, the way it's expected to read."</div>
+        <div class="who">— Illustrative scenario based on common FFL record-keeping requirements</div>
+        <div class="note">This is an illustrative example, not a verified customer review.</div>
+      </div>
+      <div class="metrics">
+        <div class="m"><div class="v">Bound</div><div class="l">format inspectors expect</div></div>
+        <div class="m"><div class="v">120</div><div class="l">pre-formatted pages</div></div>
+        <div class="m"><div class="v">2</div><div class="l">formats for counter &amp; file</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING / FORMATS -->
+<section id="formats">
   <div class="wrap">
     <div class="sec-head">
       <div class="tag">Choose Your Format</div>
@@ -252,7 +334,7 @@
 </section>
 
 <!-- FAQ -->
-<section class="sec-alt">
+<section id="faq" style="background:var(--bg2)">
   <div class="wrap">
     <div class="sec-head">
       <div class="tag">FAQ</div>
@@ -285,12 +367,33 @@
       <div>
         <h4>Reference</h4>
         <a href="https://www.ecfr.gov/current/title-27/chapter-II/subchapter-B/part-478/subject_group-ECFRa667ce4c49b6c52/section-478.125" target="_blank" rel="noopener">27 CFR &sect; 478.125 (eCFR)</a>
+        <a href="#inside">What's inside</a>
+      </div>
+      <div>
+        <h4>Stay Compliant</h4>
         <a href="#top">Back to top</a>
+        <a href="#faq">FAQ</a>
       </div>
     </div>
     <div class="copy">FFL Acquisition &amp; Disposition Book — Silas Thorne · Formatted to 27 CFR &sect; 478.125 · This page is a compliance tool, not legal advice.</div>
   </div>
 </footer>
+
+<script>
+  (function(){
+    var b=document.getElementById('burger');
+    var m=document.getElementById('mobileMenu');
+    if(b&&m){
+      b.addEventListener('click',function(){
+        var open=m.classList.toggle('open');
+        b.setAttribute('aria-expanded',open?'true':'false');
+      });
+      m.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click',function(){m.classList.remove('open');b.setAttribute('aria-expanded','false');});
+      });
+    }
+  })();
+</script>
 
 </body>
 </html>
