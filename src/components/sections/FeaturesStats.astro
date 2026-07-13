@@ -1,0 +1,19 @@
+---
+const stats = [
+  { v: '27 CFR', l: '§ 478.125 layout' },
+  { v: '120', l: 'pre-formatted pages' },
+  { v: '2', l: 'formats: PB & HC' },
+  { v: 'In Stock', l: 'ships from Amazon' },
+];
+---
+
+<section class="border-y border-neutral-200 bg-neutral-100">
+  <div class="mx-auto grid max-w-[85rem] grid-cols-2 gap-4 px-4 py-8 sm:px-6 md:grid-cols-4 lg:px-8">
+    {stats.map((s) => (
+      <div class="text-center">
+        <div class="font-serif text-3xl font-bold text-blue">{s.v}</div>
+        <div class="mt-1 text-sm text-neutral-600">{s.l}</div>
+      </div>
+    ))}
+  </div>
+</section>

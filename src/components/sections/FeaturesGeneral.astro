@@ -1,0 +1,27 @@
+---
+const cards = [
+  { ic: '!', t: 'Unannounced inspections', d: "ATF compliance inspections can happen without warning. \"I'll organize it later\" is not a plan." },
+  { ic: '✕', t: 'Loose-leaf gets rejected', d: 'Regulations call for a bound record, not a stack of printable sheets. A proper bound book removes the doubt.' },
+  { ic: '⏱', t: 'Simplicity & affordability', d: 'An easy-to-use, low-cost log that keeps you compliant without a software subscription or monthly fee.' },
+  { ic: 'i', t: 'Plain-English reference', d: 'Key compliance points noted in plain language so the "why" is never a mystery at audit time.' },
+];
+---
+
+<section class="bg-neutral-50">
+  <div class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full">
+    <div class="mb-10 max-w-2xl">
+      <p class="text-xs font-bold uppercase tracking-wider text-blue">The Reality</p>
+      <h2 class="mt-2 text-2xl font-bold tracking-tight text-neutral-800 md:text-3xl">Meeting Compliance Demands</h2>
+      <p class="mt-2 text-neutral-600">ATF record-keeping has its own quirks. We tackle them the way the regulation reads — not with a repurposed notebook.</p>
+    </div>
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {cards.map((c) => (
+        <div class="rounded-2xl border border-neutral-200 bg-white p-6 transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+          <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-blue/10 text-lg font-bold text-blue transition group-hover:bg-blue group-hover:text-white">{c.ic}</div>
+          <h3 class="text-base font-bold text-neutral-900">{c.t}</h3>
+          <p class="mt-2 text-sm text-neutral-600">{c.d}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

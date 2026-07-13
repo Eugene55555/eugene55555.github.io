@@ -1,0 +1,36 @@
+---
+const links = [
+  { name: 'Why', url: '#why' },
+  { name: 'Inside', url: '#inside' },
+  { name: 'Formats', url: '#formats' },
+  { name: 'FAQ', url: '#faq' },
+];
+const amazon = 'https://www.amazon.com/dp/B0H6V4X481';
+---
+
+<header class="sticky inset-x-0 top-4 z-50 flex w-full flex-wrap text-sm md:flex-nowrap md:justify-start">
+  <nav class="relative mx-2 w-full rounded-[36px] border border-yellow-100/40 bg-yellow-50/60 px-4 py-3 backdrop-blur-md md:flex md:items-center md:justify-between md:px-6 md:py-0 lg:px-8 xl:mx-auto">
+    <div class="flex items-center justify-between">
+      <a class="flex-none rounded-lg text-xl font-bold text-blue" href="#top">
+        <span class="mr-1 inline-flex h-7 w-7 items-center justify-center rounded-lg bg-blue text-xs font-extrabold text-white">FFL</span>
+        Bound Book
+      </a>
+      <div class="mr-5 ml-auto md:hidden">
+        <button type="button"
+          class="hs-collapse-toggle flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold text-neutral-600 transition duration-300 hover:bg-neutral-200 dark:text-neutral-400 dark:hover:bg-neutral-700"
+          data-hs-collapse="#navbar-collapse-with-animation" aria-controls="navbar-collapse-with-animation" aria-label="Toggle navigation">
+          <svg class="hs-collapse-open:hidden h-[1.25rem] w-[1.25rem] shrink-0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="6" y2="6"></line><line x1="3" x2="21" y1="12" y2="12"></line><line x1="3" x2="21" y1="18" y2="18"></line></svg>
+          <svg class="hs-collapse-open:block hidden h-[1.25rem] w-[1.25rem] shrink-0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+        </button>
+      </div>
+    </div>
+    <div id="navbar-collapse-with-animation" class="hs-collapse hidden grow basis-full overflow-hidden transition-all duration-300 md:block">
+      <div class="mt-5 flex flex-col gap-x-0 gap-y-4 md:mt-0 md:flex-row md:items-center md:justify-end md:gap-x-4 md:gap-y-0 md:ps-7 lg:gap-x-7">
+        {links.map((l) => (
+          <a class="font-medium text-neutral-600 rounded-lg px-3 py-2 transition hover:bg-neutral-100 hover:text-neutral-900" href={l.url}>{l.name}</a>
+        ))}
+        <a class="inline-flex items-center justify-center rounded-full bg-blue px-5 py-2.5 font-bold text-white transition hover:bg-blue-dark" href={amazon} target="_blank" rel="noopener">Buy on Amazon</a>
+      </div>
+    </div>
+  </nav>
+</header>
